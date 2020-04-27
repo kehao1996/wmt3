@@ -18,8 +18,10 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
+use EasyWeChat\Factory;
+
 /**
- * @Controller(prefix = "admin")
+ * @Controller(prefix = "user")
  */
 class IndexController extends ApiController
 {
@@ -31,9 +33,9 @@ class IndexController extends ApiController
     private $session;
 
     /**
-     * 域名: /admin/login
+     * 域名: /user/login
      * POST
-     * username //用户名
+     * jscode //用户名
      * password //密码
      *
      * @return string json
@@ -50,8 +52,39 @@ class IndexController extends ApiController
     public function login(RequestInterface $request)
     {
 
-        $username = $request->input('username','');
-        $password = $request->input('password','');
+        $js_code = $request->input('js_code','');
+        if(empty($js_code)){
+            return [
+                'Status' => 201,
+                'Msg' => '参数异常 js_code'
+            ];
+        }
+
+        $config = [
+            'app_id' => 'wx3cf0f39249eb0exx',
+            'secret' => 'f1c242f4f28f735d4687abb469072axx',
+
+            // 下面为可选项
+            // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
+            'response_type' => 'array',
+            'log' => [
+                'level' => 'debug',
+                'file' => __DIR__.'/wechat.log',
+            ],
+        ];
+
+        $app = Factory::miniProgram($config);
+        $result = $app->auth->session($js_code);
+
+        return [
+            'Status' => 200,
+            'Result' => $result
+        ];
+
+
+
+
+        $username = $request->input('jscode','');
 
         if(empty($username)){
             return [
@@ -60,12 +93,7 @@ class IndexController extends ApiController
             ];
         }
 
-        if($username != 'admin' && $password != 'admin100'){
-            return [
-                'Status' => 201,
-                'Msg'=> '账号密码错误'
-            ];
-        }
+
 
         $this->session->set($this->admin_key,1);
         $sessionid = $this->session->getId();
