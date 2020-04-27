@@ -10,7 +10,7 @@
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Admin;
+namespace App\Controller;
 
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
@@ -23,7 +23,7 @@ use EasyWeChat\Factory;
 /**
  * @Controller(prefix = "user")
  */
-class UserController extends ApiController
+class UserController 
 {
 
     /**
