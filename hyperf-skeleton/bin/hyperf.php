@@ -14,6 +14,12 @@ require BASE_PATH . '/vendor/autoload.php';
 
 require BASE_PATH . '/app/Common/function.php';
 
+if (isset($_REQUEST['phpsessid']) && !empty($_REQUEST['phpsessid'])) {
+    ini_set('session.gc_maxlifetime', "3600"); // 秒
+    session_id($_REQUEST['phpsessid']);
+    session_start();
+}
+
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
 (function () {
     /** @var \Psr\Container\ContainerInterface $container */
