@@ -14,6 +14,15 @@ require BASE_PATH . '/vendor/autoload.php';
 
 require BASE_PATH . '/app/Common/function.php';
 
+header('Access-Control-Allow-Origin: *');
+// 响应类型
+
+// 带 cookie 的跨域访问
+header('Access-Control-Allow-Credentials: true');
+// 响应头设置
+header('Access-Control-Allow-Headers:x-requested-with,Content-Type,X-CSRF-Token');
+
+
 if (isset($_REQUEST['phpsessid']) && !empty($_REQUEST['phpsessid'])) {
     ini_set('session.gc_maxlifetime', "3600"); // 秒
     session_id($_REQUEST['phpsessid']);
