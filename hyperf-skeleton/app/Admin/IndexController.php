@@ -20,8 +20,14 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController
+class IndexController extends Api
 {
+
+    /**
+     * @Inject()
+     * @var \Hyperf\Contract\SessionInterface
+     */
+    private $session;
 
     /**
      * 域名: /admin/login
@@ -38,7 +44,7 @@ class IndexController
      */
 
     /**
-     * @RequestMapping(path="index", methods="post")
+     * @RequestMapping(path="login", methods="post")
      */
     public function login(RequestInterface $request)
     {
@@ -51,11 +57,38 @@ class IndexController
                 'Msg' => '用户名不能为空'
             ];
         }
-        $method = $request->getMethod();
+
+        if($username != 'admin' && $password != 'admin100'){
+            return [
+                'Status' => 201,
+                'Msg'=> '账号密码错误'
+            ];
+        }
+
+        $this->session->set('WMT_ADMIN_ID',1);
+        $sessionid = $this->session->getId();
 
         return [
             'Status' => 200,
-            'message' => ''
+            'Msg' => '登录成功',
+            'Phpesessid' => $sessionid
         ];
+    }
+
+    /**
+     * @RequestMapping(path="test", methods="post")
+     */
+    public function test(RequestInterface $request){
+        if($this->mid == 0){
+            return [
+                'Status' => 403,
+                'Msg' => '未登入'
+            ];
+        }
+
+       return [
+           'Status' => 200,
+           'Msg' => 'ok'
+       ];
     }
 }

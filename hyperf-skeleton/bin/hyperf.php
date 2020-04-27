@@ -11,6 +11,8 @@ error_reporting(E_ALL);
 
 require BASE_PATH . '/vendor/autoload.php';
 
+require BASE_PATH . '/app/Common/function.php';
+
 // Self-called anonymous function that creates its own scope and keep the global namespace clean.
 (function () {
     /** @var \Psr\Container\ContainerInterface $container */
