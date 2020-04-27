@@ -48,7 +48,7 @@ class UserController extends  ApiController
      */
 
     /**
-     * @RequestMapping(path="login", methods="post")
+     * @RequestMapping(path="login", methods="post,options")
      */
     public function login(RequestInterface $request)
     {
@@ -122,7 +122,7 @@ class UserController extends  ApiController
      */
 
     /**
-     * @RequestMapping(path="getConfig", methods="post")
+     * @RequestMapping(path="getConfig", methods="post,options")
      */
     public function getConfig(RequestInterface $request){
         if(!$this->session->get($this->user_key)){

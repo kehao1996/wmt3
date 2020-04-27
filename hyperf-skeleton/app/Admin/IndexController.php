@@ -45,7 +45,7 @@ class IndexController extends ApiController
      */
 
     /**
-     * @RequestMapping(path="login", methods="post")
+     * @RequestMapping(path="login", methods="post,options")
      */
     public function login(RequestInterface $request)
     {
@@ -78,7 +78,7 @@ class IndexController extends ApiController
     }
 
     /**
-     * @RequestMapping(path="test", methods="get,post")
+     * @RequestMapping(path="test", methods="get,post,options")
      */
     public function test(RequestInterface $request){
         if(!$this->session->get($this->admin_key)){
@@ -104,7 +104,7 @@ class IndexController extends ApiController
      */
 
     /**
-     * @RequestMapping(path="setConfig", methods="post")
+     * @RequestMapping(path="setConfig", methods="post,options")
      */
     public function setConfig(RequestInterface $request){
         if(!$this->session->get($this->admin_key)){
@@ -139,7 +139,7 @@ class IndexController extends ApiController
      */
 
     /**
-     * @RequestMapping(path="getConfig", methods="post")
+     * @RequestMapping(path="getConfig", methods="post,options")
      */
     public function getConfig(RequestInterface $request){
         if(!$this->session->get($this->admin_key)){
