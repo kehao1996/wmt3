@@ -77,7 +77,7 @@ class IndexController
     }
 
     /**
-     * @RequestMapping(path="test", methods="post")
+     * @RequestMapping(path="test", methods="get,post")
      */
     public function test(RequestInterface $request){
         var_dump($this->session->get('WMT_ADMIN_ID'));
