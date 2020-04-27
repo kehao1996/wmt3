@@ -10,7 +10,7 @@
  * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
-namespace App\Controller;
+namespace App\AdminControlle;
 
 class IndexController extends AbstractController
 {
