@@ -9,7 +9,7 @@
 
 function getSession($key)
 {
-    $key = 'WMT_HYPERF_' . $key;
+
     if (isset($_SESSION[$key])) {
         return $_SESSION[$key];
     }
@@ -18,7 +18,7 @@ function getSession($key)
 
 function setSession($key, $val)
 {
-    $key = 'WMT_HYPERF_' . $key;
+
     $_SESSION[$key] = $val;
     return true;
 }
