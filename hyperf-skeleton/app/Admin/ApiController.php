@@ -7,7 +7,7 @@
  */
 
 namespace App\Admin;
-
+use Hyperf\Di\Annotation\Inject;
 
 class ApiController {
 

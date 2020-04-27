@@ -15,7 +15,7 @@ namespace App\Admin;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-
+use Hyperf\Di\Annotation\Inject;
 
 /**
  * @Controller(prefix = "admin")

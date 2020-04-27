@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4b15e5e-0580-4e4f-9719-aad4b7c61eb4" name="Default" comment="">
-      <change type="MOVED" beforePath="D:\wnmp\www\wmt3\hyperf-skeleton\app\Admin\Api.php" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" />
     </list>
     <ignored path="wmt3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.4375" vertical-offset="172" max-vertical-offset="2300">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.24717833" vertical-offset="172" max-vertical-offset="2300">
+              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
               <folding>
                 <element signature="e#8#221#0#PHP" expanded="true" />
                 <element signature="e#245#293#0#PHP" expanded="true" />
@@ -50,11 +51,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28555304" vertical-offset="0" max-vertical-offset="989">
-              <caret line="11" column="19" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="19" />
+            <state vertical-scroll-proportion="-6.46875" vertical-offset="0" max-vertical-offset="989">
+              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
               <folding>
                 <element signature="e#6#94#0#PHP" expanded="true" />
               </folding>
@@ -131,6 +132,7 @@
         <option value="$PROJECT_DIR$/hyperf-skeleton/app/Common/function.php" />
         <option value="$PROJECT_DIR$/hyperf-skeleton/config/autoload/middlewares.php" />
         <option value="$PROJECT_DIR$/hyperf-skeleton/app/Admin/Api.php" />
+        <option value="$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php" />
         <option value="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" />
       </list>
     </option>
@@ -424,23 +426,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php">
+    <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.4375" vertical-offset="172" max-vertical-offset="2300">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        <state vertical-scroll-proportion="-6.46875" vertical-offset="0" max-vertical-offset="989">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
           <folding>
-            <element signature="e#8#221#0#PHP" expanded="true" />
-            <element signature="e#245#293#0#PHP" expanded="true" />
+            <element signature="e#6#94#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/ApiController.php">
+    <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28555304" vertical-offset="0" max-vertical-offset="989">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.24717833" vertical-offset="172" max-vertical-offset="2300">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding>
-            <element signature="e#6#94#0#PHP" expanded="true" />
+            <element signature="e#8#221#0#PHP" expanded="true" />
+            <element signature="e#245#293#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
