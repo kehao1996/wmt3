@@ -23,7 +23,12 @@ use Hyperf\Di\Annotation\Inject;
 class IndexController extends ApiController
 {
 
-   
+    /**
+     * @Inject()
+     * @var \Hyperf\Contract\SessionInterface
+     */
+    private $session;
+
     /**
      * 域名: /admin/login
      * POST
