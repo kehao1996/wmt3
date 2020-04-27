@@ -23,7 +23,7 @@ use EasyWeChat\Factory;
 /**
  * @Controller(prefix = "user")
  */
-class IndexController extends ApiController
+class UserController extends ApiController
 {
 
     /**
