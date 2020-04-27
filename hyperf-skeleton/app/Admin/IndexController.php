@@ -20,7 +20,7 @@ use Hyperf\Di\Annotation\Inject;
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController extends  ApiController
+class IndexController
 {
 
     /**
@@ -80,7 +80,8 @@ class IndexController extends  ApiController
      * @RequestMapping(path="test", methods="post")
      */
     public function test(RequestInterface $request){
-        if($this->mid == 0){
+        var_dump($this->session->get('WMT_ADMIN_ID'));
+        if(!$this->session->get('WMT_ADMIN_ID')){
             return [
                 'Status' => 403,
                 'Msg' => '未登入'
