@@ -160,7 +160,7 @@ class IndexController extends ApiController
         }
 
          $data = unserialize($data);
-         $data['prize'] = json_decode($data,true);
+         $data['prize'] = json_decode($data['prize'],true);
 
 
         return [

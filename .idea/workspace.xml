@@ -30,7 +30,7 @@
       <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.8598131" vertical-offset="2134" max-vertical-offset="4117">
+            <state vertical-scroll-proportion="0.57009345" vertical-offset="3238" max-vertical-offset="4117">
               <caret line="162" column="50" selection-start-line="162" selection-start-column="50" selection-end-line="162" selection-end-column="50" />
               <folding>
                 <element signature="e#8#221#0#PHP" expanded="true" />
@@ -547,7 +547,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8598131" vertical-offset="2134" max-vertical-offset="4117">
+        <state vertical-scroll-proportion="0.57009345" vertical-offset="3238" max-vertical-offset="4117">
           <caret line="162" column="50" selection-start-line="162" selection-start-column="50" selection-end-line="162" selection-end-column="50" />
           <folding>
             <element signature="e#8#221#0#PHP" expanded="true" />
