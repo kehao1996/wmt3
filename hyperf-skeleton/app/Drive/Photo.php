@@ -14,7 +14,7 @@ namespace App\Drive;
 
 ini_set('memory_limit', '512M');
 
-class PhotoImage
+class Photo
 {
     private function __construct()
     {
