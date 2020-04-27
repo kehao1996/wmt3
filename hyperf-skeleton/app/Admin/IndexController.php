@@ -15,19 +15,14 @@ namespace App\Admin;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-use Hyperf\Di\Annotation\Inject;
+
 
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController 
+class IndexController extends  ApiController
 {
 
-    /**
-     * @Inject()
-     * @var \Hyperf\Contract\SessionInterface
-     */
-    private $session;
 
     /**
      * 域名: /admin/login
