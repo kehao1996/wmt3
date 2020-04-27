@@ -16,11 +16,12 @@ use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
-
+use Hyperf\Utils\ApplicationContext;
+use Hyperf\Redis\RedisFactory;
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController
+class IndexController extends ApiController
 {
 
     /**
@@ -66,7 +67,7 @@ class IndexController
             ];
         }
 
-        $this->session->set('WMT_ADMIN_ID',1);
+        $this->session->set($this->admin_key,1);
         $sessionid = $this->session->getId();
 
         return [
@@ -80,8 +81,7 @@ class IndexController
      * @RequestMapping(path="test", methods="get,post")
      */
     public function test(RequestInterface $request){
-        var_dump($this->session->get('WMT_ADMIN_ID'));
-        if(!$this->session->get('WMT_ADMIN_ID')){
+        if(!$this->session->get($this->admin_key)){
             return [
                 'Status' => 403,
                 'Msg' => '未登入'
@@ -93,4 +93,80 @@ class IndexController
            'Msg' => 'ok'
        ];
     }
+
+    /**
+     *  域名 /admin/setConfig
+     *
+     *
+     *  wxh //客服微信号
+     *  prize //奖品 自定义格式：[{"Name": "奖品1","Rate": 0.1,"Desc": "奖品描述","Icon": "图片"},{"Name": "奖品2","Rate": 0.9,"Desc": "奖品描述","Icon": "图片"}]
+     *  share_status //1开启0关闭  开启后用户抽奖机会用完提示分享 0 关闭后不能分享
+     */
+
+    /**
+     * @RequestMapping(path="setConfig", methods="post")
+     */
+    public function setConfig(RequestInterface $request){
+        if(!$this->session->get($this->admin_key)){
+            return [
+                'Status' => 403,
+                'Msg' => '未登入'
+            ];
+        }
+
+        $data['wxh'] = $request->input('wxh','');
+        $data['prize'] = $request->input('prize','');
+        $data['share_status'] = $request->input('share_status',0);
+
+
+
+        $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+        $redis = $container->get(RedisFactory::class)->get('default');
+
+        $data = serialize($data);
+        $redis->set($this->config_key,$data,864000); //缓存10天
+
+        return [
+            'Status' => 200,
+            'Msg' => 'ok'
+        ];
+    }
+
+    /**
+     * @RequestMapping(path="getConfig", methods="post")
+     */
+    public function getConfig(RequestInterface $request){
+        if(!$this->session->get($this->admin_key)){
+            return [
+                'Status' => 403,
+                'Msg' => '未登入'
+            ];
+        }
+
+        $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+        $redis = $container->get(RedisFactory::class)->get('default');
+        $data = $redis->get($this->config_key);
+        if(!$data){
+            return [
+                'Status' => 200,
+                'Data' => [
+
+                ]
+            ];
+        }
+
+         $data = unserialize($data);
+
+
+        return [
+            'Status' => 200,
+            'Data' => $data
+        ];
+    }
+
+
 }
