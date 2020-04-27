@@ -19,9 +19,9 @@ class CorsMiddleware implements MiddlewareInterface
 
         Context::set(ResponseInterface::class, $response);
 
-        if ($request->getMethod() == 'OPTIONS') {
-            return $response;
-        }
+//        if ($request->getMethod() == 'OPTIONS') {
+//            return $response;
+//        }
 
 return $handler->handle($request);
 }
