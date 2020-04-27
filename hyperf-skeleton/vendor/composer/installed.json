@@ -2978,6 +2978,69 @@
         ]
     },
     {
+        "name": "hyperf/session",
+        "version": "v1.1.26",
+        "version_normalized": "1.1.26.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/session.git",
+            "reference": "a0a1f6a7a3e8511cc370b9791325aed2ea9dd771"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/session/zipball/a0a1f6a7a3e8511cc370b9791325aed2ea9dd771",
+            "reference": "a0a1f6a7a3e8511cc370b9791325aed2ea9dd771",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "hyperf/utils": "^1.1",
+            "php": ">=7.2",
+            "psr/http-server-middleware": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "malukenho/docheader": "^0.1.6",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "suggest": {
+            "hyperf/config": "Required to load session config.",
+            "psr/container": "Required to use SessionFactory."
+        },
+        "time": "2020-04-16T03:41:10+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            },
+            "hyperf": {
+                "config": "Hyperf\\Session\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\Session\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A session library",
+        "homepage": "https://hyperf.io",
+        "keywords": [
+            "php",
+            "session"
+        ]
+    },
+    {
         "name": "hyperf/testing",
         "version": "v1.1.26",
         "version_normalized": "1.1.26.0",

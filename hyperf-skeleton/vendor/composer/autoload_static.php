@@ -111,6 +111,7 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         array (
             'Hyperf\\Utils\\' => 13,
             'Hyperf\\Testing\\' => 15,
+            'Hyperf\\Session\\' => 15,
             'Hyperf\\Server\\' => 14,
             'Hyperf\\Redis\\' => 13,
             'Hyperf\\Process\\' => 15,
@@ -392,6 +393,10 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         'Hyperf\\Testing\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/testing/src',
+        ),
+        'Hyperf\\Session\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/session/src',
         ),
         'Hyperf\\Server\\' => 
         array (

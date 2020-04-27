@@ -59,6 +59,7 @@ return array(
     'Jean85\\' => array($vendorDir . '/jean85/pretty-package-versions/src'),
     'Hyperf\\Utils\\' => array($vendorDir . '/hyperf/utils/src'),
     'Hyperf\\Testing\\' => array($vendorDir . '/hyperf/testing/src'),
+    'Hyperf\\Session\\' => array($vendorDir . '/hyperf/session/src'),
     'Hyperf\\Server\\' => array($vendorDir . '/hyperf/server/src'),
     'Hyperf\\Redis\\' => array($vendorDir . '/hyperf/redis/src'),
     'Hyperf\\Process\\' => array($vendorDir . '/hyperf/process/src'),
