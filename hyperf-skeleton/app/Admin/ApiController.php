@@ -24,20 +24,16 @@ class ApiController {
     protected $mid = 0;
 
 
-//    /**
-//     * 构造函数
-//     *
-//     * @ignore
-//     */
-//    public function __construct()
-//    {
-//        $key = 'WMT_ADMIN_ID';
-//        if ($this->session->has($key)) {
-//            $userid = $this->session->get($key);
-//            if($userid){
-//                $this->mid = $userid;
-//            }
-//
-//        }
-//    }
+
+    public function __construct()
+    {
+        $key = 'WMT_ADMIN_ID';
+        if ($this->session->has($key)) {
+            $userid = $this->session->get($key);
+            if($userid){
+                $this->mid = $userid;
+            }
+
+        }
+    }
 }
