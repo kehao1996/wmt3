@@ -15,14 +15,19 @@ namespace App\Admin;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
-
+use Hyperf\Di\Annotation\Inject;
 
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController extends  ApiController
+class IndexController
 {
 
+    /**
+     * @Inject()
+     * @var \Hyperf\Contract\SessionInterface
+     */
+    private $session;
 
     /**
      * 域名: /admin/login
@@ -43,7 +48,6 @@ class IndexController extends  ApiController
      */
     public function login(RequestInterface $request)
     {
-        var_dump($this->session->has('a'));
 
         $username = $request->input('username','');
         $password = $request->input('password','');

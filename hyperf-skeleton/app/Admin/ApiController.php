@@ -14,26 +14,14 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 class ApiController {
 
 
-
-    /**
-     * @Inject()
-     * @var \Hyperf\Contract\SessionInterface
-     */
-    private $session;
-
+    
     protected $mid = 0;
 
 
 
     public function __construct()
     {
-        $key = 'WMT_ADMIN_ID';
-        if ($this->session->has($key)) {
-            $userid = $this->session->get($key);
-            if($userid){
-                $this->mid = $userid;
-            }
+        var_dump( getSession('WMT_ADMIN_ID'));
 
-        }
     }
 }
