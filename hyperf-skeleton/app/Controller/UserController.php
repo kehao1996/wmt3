@@ -61,8 +61,8 @@ class IndexController extends ApiController
         }
 
         $config = [
-            'app_id' => 'wx3cf0f39249eb0exx',
-            'secret' => 'f1c242f4f28f735d4687abb469072axx',
+            'app_id' => 'wx395497f7015b6ef2 ',
+            'secret' => 'f317b9fcc7e42ccc4587ae281b72d386',
 
             // 下面为可选项
             // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
