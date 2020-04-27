@@ -20,10 +20,11 @@ use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
 use EasyWeChat\Factory;
 
+
 /**
  * @Controller(prefix = "user")
  */
-class UserController 
+class UserController
 {
 
     /**
@@ -60,6 +61,9 @@ class UserController
             ];
         }
 
+        try{
+
+
         $config = [
             'app_id' => 'wx395497f7015b6ef2 ',
             'secret' => 'f317b9fcc7e42ccc4587ae281b72d386',
@@ -75,6 +79,12 @@ class UserController
 
         $app = Factory::miniProgram($config);
         $result = $app->auth->session($js_code);
+        }catch (\Exception $e){
+            return [
+                'Status' => 201,
+                'Msg' => $e->getMessage()
+            ];
+        }
 
         return [
             'Status' => 200,
