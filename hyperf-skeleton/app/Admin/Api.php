@@ -9,7 +9,7 @@
 namespace App\Admin;
 
 
-class Api {
+class ApiController {
 
 
 

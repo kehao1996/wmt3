@@ -20,7 +20,7 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController extends Api
+class IndexController extends ApiController
 {
 
     /**
