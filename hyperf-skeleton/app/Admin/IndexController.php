@@ -20,7 +20,7 @@ use Hyperf\Di\Annotation\Inject;
 /**
  * @Controller(prefix = "admin")
  */
-class IndexController
+class IndexController extends  ApiController
 {
 
     /**

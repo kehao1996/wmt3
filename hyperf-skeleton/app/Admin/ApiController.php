@@ -7,14 +7,12 @@
  */
 
 namespace App\Admin;
-use Hyperf\Di\Annotation\Inject;
-use Hyperf\HttpServer\Annotation\Controller;
-use Hyperf\HttpServer\Annotation\RequestMapping;
+
 
 class ApiController {
 
 
-    
+
     protected $mid = 0;
 
 
