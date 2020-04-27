@@ -30,6 +30,7 @@ class ApiController {
     public function __construct()
     {
         $key = 'WMT_ADMIN_ID';
+        echo $key;
         if ($this->session->has($key)) {
             $userid = $this->session->get($key);
             if($userid){
