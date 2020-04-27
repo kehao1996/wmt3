@@ -24,16 +24,38 @@ class IndexController
 {
 
     /**
-     * @RequestMapping(path="index", methods="get,post")
+     * 域名: /admin/login
+     * POST
+     * username //用户名
+     * password //密码
+     *
+     * @return string json
+     *
+     * <pre>
+     * Status 200 //成功
+     * Status 201 //失败
+     * </pre>
      */
-    public function test(RequestInterface $request)
+
+    /**
+     * @RequestMapping(path="index", methods="post")
+     */
+    public function login(RequestInterface $request)
     {
-        $user = $request->input('user', 'Hyperf');
+        $username = $request->input('username','');
+        $password = $request->input('password','');
+
+        if(empty($username)){
+            return [
+                'Status' => 201,
+                'Msg' => '用户名不能为空'
+            ];
+        }
         $method = $request->getMethod();
 
         return [
-            'method' => $method,
-            'message' => "Hello {$user}.",
+            'Status' => 200,
+            'message' => ''
         ];
     }
 }
