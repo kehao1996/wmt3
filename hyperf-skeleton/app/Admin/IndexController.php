@@ -26,10 +26,10 @@ class IndexController
     /**
      * @RequestMapping(path="index", methods="get,post")
      */
-    public function index()
+    public function test(RequestInterface $request)
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
+        $user = $request->input('user', 'Hyperf');
+        $method = $request->getMethod();
 
         return [
             'method' => $method,
