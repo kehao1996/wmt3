@@ -158,7 +158,7 @@ class UserController extends  ApiController
 
 
     /**
-     * @RequestMapping(path="draw", methods="post")
+     * @RequestMapping(path="draw", methods="post,options")
      */
     public function draw(){
 //        if(!$this->session->get($this->user_key)){
