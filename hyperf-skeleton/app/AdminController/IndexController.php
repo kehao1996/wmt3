@@ -12,8 +12,20 @@
 
 namespace App\AdminControlle;
 
-class IndexController extends AbstractController
+use Hyperf\HttpServer\Contract\RequestInterface;
+use Hyperf\HttpServer\Annotation\Controller;
+use Hyperf\HttpServer\Annotation\RequestMapping;
+
+
+/**
+ * @Controller(prefix = "admin")
+ */
+class IndexController
 {
+
+    /**
+     * @RequestMapping(path="index", methods="get,post")
+     */
     public function index()
     {
         $user = $this->request->input('user', 'Hyperf');
