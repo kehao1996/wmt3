@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Middleware;
 
 use Hyperf\Utils\Context;
@@ -23,6 +24,6 @@ class CorsMiddleware implements MiddlewareInterface
 //            return $response;
 //        }
 
-return $handler->handle($request);
-}
+        return $handler->handle($request);
+    }
 }

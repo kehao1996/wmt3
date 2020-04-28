@@ -65,7 +65,7 @@ class UserController extends  ApiController
 
 
         $config = [
-            'app_id' => 'wx395497f7015b6ef2 ',
+            'app_id' => 'wx395497f7015b6ef2',
             'secret' => 'f317b9fcc7e42ccc4587ae281b72d386',
 
             // 下面为可选项
