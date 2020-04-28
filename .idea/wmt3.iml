@@ -57,6 +57,7 @@
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/laminas/laminas-mime" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/laminas/laminas-stdlib" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/laminas/laminas-zendframework-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/myclabs/deep-copy" />
@@ -82,6 +83,7 @@
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpdocumentor/reflection-common" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpdocumentor/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phper666/jwt-auth" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpmd/phpmd" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpoption/phpoption" />
       <excludeFolder url="file://$MODULE_DIR$/hyperf-skeleton/vendor/phpspec/prophecy" />

@@ -18,11 +18,27 @@ use Hyperf\HttpServer\Annotation\RequestMapping;
 use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
+use \Phper666\JWTAuth\JWT;
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * @Controller(prefix = "admin")
  */
 class IndexController extends ApiController
 {
+
+
+    /**
+     * @Inject()
+     * @var ResponseInterface
+     */
+    private $response;
+
+    /**
+     * @Inject()
+     * @var JWT
+     */
+    private $jwt;
 
     /**
      * @Inject()
@@ -67,27 +83,29 @@ class IndexController extends ApiController
             ];
         }
 
-        $this->session->set($this->admin_key,1);
-        $sessionid = $this->session->getId();
-
-        return [
-            'Status' => 200,
-            'Msg' => '登录成功',
-            'Phpesessid' => $sessionid
+        $userData = [
+            'uid' => 1, // 如果使用单点登录，必须存在配置文件中的sso_key的值，一般设置为用户的id
+            'username' => 'admin',
         ];
+        // 使用默认场景登录
+        $token = $this->jwt->setScene('default')->getToken($userData);
+
+        $data = [
+            'Status' => 200,
+            'msg' => '登录成功',
+            'Data' => [
+                'token' => $token,
+                'exp' => $this->jwt->getTTL(),
+            ]
+        ];
+
+        return $this->response->json($data);
     }
 
     /**
      * @RequestMapping(path="test", methods="get,post,options")
      */
     public function test(RequestInterface $request){
-        if(!$this->session->get($this->admin_key)){
-            return [
-                'Status' => 403,
-                'Msg' => '未登入'
-            ];
-        }
-
        return [
            'Status' => 200,
            'Msg' => 'ok'
@@ -107,13 +125,6 @@ class IndexController extends ApiController
      * @RequestMapping(path="setConfig", methods="post,options")
      */
     public function setConfig(RequestInterface $request){
-        if(!$this->session->get($this->admin_key)){
-            return [
-                'Status' => 403,
-                'Msg' => '未登入'
-            ];
-        }
-
         $data['wxh'] = $request->input('wxh','');
         $data['prize'] = $request->input('prize','');
         $data['share_status'] = $request->input('share_status',0);
@@ -142,12 +153,6 @@ class IndexController extends ApiController
      * @RequestMapping(path="getConfig", methods="post,options")
      */
     public function getConfig(RequestInterface $request){
-        if(!$this->session->get($this->admin_key)){
-            return [
-                'Status' => 403,
-                'Msg' => '未登入'
-            ];
-        }
 
         $container = ApplicationContext::getContainer();
 
@@ -172,6 +177,32 @@ class IndexController extends ApiController
             'Data' => $data
         ];
     }
+
+    /**
+     * 域名 /admin/loginout
+     *
+     */
+
+    /**
+     * @RequestMapping(path="loginOut", methods="get,post,options")
+     */
+    public function loginOut(){
+        $this->jwt->logout();
+    }
+
+
+    /**
+     * @RequestMapping(path="checkLogin", methods="get,post,options")
+     */
+    public function checkLogin(){
+        $data = [
+            'code' => 0,
+            'msg' => 'success',
+            'data' => $this->jwt->getParserData()
+        ];
+        return $this->response->json($data);
+    }
+
 
 
 }

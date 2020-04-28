@@ -140,6 +140,8 @@
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/di" />
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/db" />
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/websocket-client" />
+      <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/phper666/jwt-auth" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
