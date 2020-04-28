@@ -50,7 +50,7 @@ class DrawController extends ApiController
 
     /**
      * 获取抽奖的用户基本信息
-     * @url /draw/getUserInfo
+     * 域名 /draw/getUserInfo
      *
      * @return string json
      *
@@ -101,7 +101,7 @@ class DrawController extends ApiController
 
     /**
      * 获取抽奖活动基本配置
-     * @url /draw/getConfig
+     * 域名 /draw/getConfig
      *
      * @return string json
      *
@@ -151,7 +151,7 @@ class DrawController extends ApiController
 
     /**
      * 抽奖
-     * @url /draw/draw
+     * 域名 /draw/draw
      *
      * @return string json
      *

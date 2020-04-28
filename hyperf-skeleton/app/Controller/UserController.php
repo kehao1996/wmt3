@@ -47,7 +47,7 @@ class UserController extends ApiController
 
     /**
      * 登录
-     * @url: /user/login
+     * 域名: /user/login
      * POST
      * @param string js_code //小程序code
      *
@@ -182,7 +182,7 @@ class UserController extends ApiController
 
     /**
      * 修改个人信息
-     * @url:/user/updateInfo
+     * 域名:/user/updateInfo
      * headimg //头像
      * nickname //名称
      * sex //性别
@@ -211,7 +211,7 @@ class UserController extends ApiController
 
     /**
      * 获取用户信息
-     * @url /user/getUserInfo
+     * 域名 /user/getUserInfo
      *
      * @return string json
      *
@@ -243,7 +243,7 @@ class UserController extends ApiController
 
     /**
      * 获取基本配置
-     * @url /user/getConfig
+     * 域名 /user/getConfig
      *
      * @RequestMapping(path="getConfig", methods="post,options")
      * @Middleware(JWTAuthMiddleware::class)
@@ -278,7 +278,7 @@ class UserController extends ApiController
 
     /**
      * 抽奖
-     * @url /user/draw
+     * 域名 /user/draw
      *
      * @return string json
      *
