@@ -33,6 +33,7 @@ class UserController extends ApiController
      * @var \Hyperf\Contract\SessionInterface
      */
     private $session;
+    private $mid ;
 
     /**
      * 域名: /user/login
@@ -47,6 +48,14 @@ class UserController extends ApiController
      * Status 201 //失败
      * </pre>
      */
+
+    public function __construct()
+    {
+        $userid = $this->session->get($this->user_key);
+        if($userid){
+            $this->mid = $userid;
+        }
+    }
 
     /**
      * @RequestMapping(path="login", methods="post,options")
@@ -92,7 +101,8 @@ class UserController extends ApiController
             $userid = $dbUser->getidByOpenid($openid);
             if (!$userid) { //不存在添加
                 $data = [
-                    'openid' => $openid
+                    'openid' => $openid,
+                    'createtime' => date('Y-m-d H:i:s')
                 ];
                 $status = $dbUser->add($data);
                 if(!$status){
@@ -130,6 +140,38 @@ class UserController extends ApiController
                 'Msg' => $e->getMessage()
             ];
         }
+    }
+
+    /**
+     * 域名:/user/updateInfo
+     * 修改个人信息
+     *
+     */
+
+    /**
+     * @RequestMapping(path="updateInfo", methods="post,options")
+     */
+    public function updateInfo(RequestInterface $request){
+        if (!$this->mid) {
+            return [
+                'Status' => 403,
+                'Msg' => '未登入'
+            ];
+        }
+
+
+
+        $data['headimg'] = $request->input('headimg','');
+        $data['nickname'] = $request->input('nickname','');
+        $data['sex'] = $request->input('sex',0);
+
+        $dbUser = new User();
+        $dbUser->edit($data,$this->mid);
+
+        return [
+            'Status' => 200,
+            'Msg' => 'ok'
+        ];
     }
 
 

@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +213,7 @@
       <updated>1588037449257</updated>
       <workItem from="1588037450369" duration="24000" />
       <workItem from="1588037474990" duration="107000" />
-      <workItem from="1588037666532" duration="4621000" />
+      <workItem from="1588037666532" duration="5144000" />
     </task>
     <servers />
   </component>
