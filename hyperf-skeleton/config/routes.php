@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of Hyperf.
  *
@@ -15,3 +16,12 @@ use Hyperf\HttpServer\Router\Router;
 Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
 
 Router::addRoute(['GET', 'POST', 'Options'], '/admin/login', 'App\Admin\IndexController@login');
+
+Router::addGroup('/admin', function () {
+    Router::addRoute(['GET', 'POST', 'Options'], '/checkLogin', 'App\Admin\IndexController@checkLogin');
+}, [
+    'middleware' => [
+        Phper666\JWTAuth\Middleware\JWTAuthMiddleware::class
+    ]
+]);
+

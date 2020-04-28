@@ -15,6 +15,6 @@ return [
     'http' => [
         \Hyperf\Session\Middleware\SessionMiddleware::class,
         \App\Middleware\CorsMiddleware::class,
-        \Phper666\JWTAuth\Middleware\JWTAuthMiddleware::class,
+//        \Phper666\JWTAuth\Middleware\JWTAuthMiddleware::class,
     ],
 ];
