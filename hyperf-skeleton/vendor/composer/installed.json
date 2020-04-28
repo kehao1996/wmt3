@@ -1795,6 +1795,63 @@
         ]
     },
     {
+        "name": "hyperf/db",
+        "version": "v1.1.26",
+        "version_normalized": "1.1.26.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/db.git",
+            "reference": "f16141c40d114d2ca3585c57977545a9fcc03068"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/db/zipball/f16141c40d114d2ca3585c57977545a9fcc03068",
+            "reference": "f16141c40d114d2ca3585c57977545a9fcc03068",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "ext-swoole": ">=4.4",
+            "hyperf/config": "~1.1.0",
+            "hyperf/contract": "~1.1.0",
+            "hyperf/pool": "~1.1.0",
+            "hyperf/utils": "~1.1.0",
+            "php": ">=7.2",
+            "psr/container": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.14",
+            "hyperf/testing": "1.1.*",
+            "mockery/mockery": "^1.0"
+        },
+        "time": "2020-04-16T03:41:10+00:00",
+        "type": "library",
+        "extra": {
+            "hyperf": {
+                "config": "Hyperf\\DB\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\DB\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "keywords": [
+            "hyperf",
+            "php"
+        ]
+    },
+    {
         "name": "hyperf/db-connection",
         "version": "v1.1.26",
         "version_normalized": "1.1.26.0",
@@ -2844,17 +2901,17 @@
     },
     {
         "name": "hyperf/redis",
-        "version": "v1.1.20",
-        "version_normalized": "1.1.20.0",
+        "version": "v1.1.26",
+        "version_normalized": "1.1.26.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hyperf/redis.git",
-            "reference": "50970261b10c4faad9e6526afe79d7b075df3f57"
+            "reference": "7778027f413aed50c59f0b95df0aa904767007a9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hyperf/redis/zipball/50970261b10c4faad9e6526afe79d7b075df3f57",
-            "reference": "50970261b10c4faad9e6526afe79d7b075df3f57",
+            "url": "https://api.github.com/repos/hyperf/redis/zipball/7778027f413aed50c59f0b95df0aa904767007a9",
+            "reference": "7778027f413aed50c59f0b95df0aa904767007a9",
             "shasum": "",
             "mirrors": [
                 {
@@ -2864,6 +2921,7 @@
             ]
         },
         "require": {
+            "ext-redis": "*",
             "hyperf/contract": "~1.1.0",
             "hyperf/pool": "~1.1.0",
             "hyperf/utils": "~1.1.0",
@@ -2880,7 +2938,7 @@
         "suggest": {
             "hyperf/di": "Create the RedisPool via dependency injection."
         },
-        "time": "2020-03-12T03:16:52+00:00",
+        "time": "2020-04-16T03:41:10+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2901,6 +2959,7 @@
             "MIT"
         ],
         "description": "A redis component for hyperf.",
+        "homepage": "https://hyperf.io",
         "keywords": [
             "hyperf",
             "php",
@@ -3174,6 +3233,70 @@
             "php",
             "swoole",
             "utils"
+        ]
+    },
+    {
+        "name": "hyperf/websocket-client",
+        "version": "v1.1.26",
+        "version_normalized": "1.1.26.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hyperf/websocket-client.git",
+            "reference": "f9ced56aa15762bf5a250656cb25ba7787b11bf6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hyperf/websocket-client/zipball/f9ced56aa15762bf5a250656cb25ba7787b11bf6",
+            "reference": "f9ced56aa15762bf5a250656cb25ba7787b11bf6",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "hyperf/contract": "~1.1.0",
+            "hyperf/http-message": "~1.1.0",
+            "hyperf/utils": "~1.1.0",
+            "php": ">=7.2",
+            "psr/container": "^1.0",
+            "psr/log": "^1.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "malukenho/docheader": "^0.1.6",
+            "mockery/mockery": "^1.0",
+            "phpunit/phpunit": "^7.0"
+        },
+        "time": "2020-04-16T03:41:10+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.1-dev"
+            },
+            "hyperf": {
+                "config": "Hyperf\\WebSocketClient\\ConfigProvider"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Hyperf\\WebSocketClient\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "A websocket client library for Hyperf.",
+        "homepage": "https://hyperf.io",
+        "keywords": [
+            "hyperf",
+            "php",
+            "swoole",
+            "websocket"
         ]
     },
     {

@@ -37,6 +37,7 @@ final class Versions
   'hyperf/config' => 'v1.1.26@8b882c9e057544a62fda130a272938be3f9784ef',
   'hyperf/contract' => 'v1.1.26@6673f08bbdb62721d358852537fd19ea9496c35c',
   'hyperf/database' => 'v1.1.27@5435b69be75f3b14ddaa2f1a6028a16eb69a96dd',
+  'hyperf/db' => 'v1.1.26@f16141c40d114d2ca3585c57977545a9fcc03068',
   'hyperf/db-connection' => 'v1.1.26@6a66c0cc5fc8377092eff6edfeedea977fa78ce6',
   'hyperf/di' => 'v1.1.26@9e7c7e7a020ddbb76ee767acb3e3475504e45b45',
   'hyperf/dispatcher' => 'v1.1.26@0a20af0373f3a59901719ef568eb95d55eef27eb',
@@ -52,10 +53,11 @@ final class Versions
   'hyperf/paginator' => 'v1.1.26@80a946b58a94fb427f83232a4c990b32583379a3',
   'hyperf/pool' => 'v1.1.26@909b8155f3ad2b651360374595a98c2326913f9a',
   'hyperf/process' => 'v1.1.26@a629e2bbec3ecb146f3f991c6c7935e86592db3a',
-  'hyperf/redis' => 'v1.1.20@50970261b10c4faad9e6526afe79d7b075df3f57',
+  'hyperf/redis' => 'v1.1.26@7778027f413aed50c59f0b95df0aa904767007a9',
   'hyperf/server' => 'v1.1.26@ca348e07e7aa35b63cf52230261c068dbdcbb0f9',
   'hyperf/session' => 'v1.1.26@a0a1f6a7a3e8511cc370b9791325aed2ea9dd771',
   'hyperf/utils' => 'v1.1.27@aa152d3d707e8ccd0fc0585b3f73140a97695c1f',
+  'hyperf/websocket-client' => 'v1.1.26@f9ced56aa15762bf5a250656cb25ba7787b11bf6',
   'jetbrains/phpstorm-stubs' => 'v2019.3@883b6facd78e01c0743b554af86fa590c2573f40',
   'laminas/laminas-mime' => '2.7.4@e45a7d856bf7b4a7b5bd00d6371f9961dc233add',
   'laminas/laminas-stdlib' => '3.2.1@2b18347625a2f06a1a485acfbc870f699dbe51c6',
@@ -162,7 +164,7 @@ final class Versions
   'symfony/process' => 'v5.0.7@c5ca4a0fc16a0c888067d43fbcfe1f8a53d8e70e',
   'symfony/stopwatch' => 'v5.0.7@a1d86d30d4522423afc998f32404efa34fcf5a73',
   'theseer/tokenizer' => '1.1.3@11336f6f84e16a720dae9d8e6ed5019efa85a0f9',
-  'hyperf/hyperf-skeleton' => 'dev-master@5842145430c5847e904d47413ead1500593b6c86',
+  'hyperf/hyperf-skeleton' => 'dev-master@e998c0ebdc5082b34ca23aeb5961a89faf1e3d9e',
 );
 
     private function __construct()

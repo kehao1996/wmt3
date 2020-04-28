@@ -9,7 +9,7 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Hyperf\Redis;
+namespace Hyperf\DB;
 
 class ConfigProvider
 {
@@ -17,7 +17,8 @@ class ConfigProvider
     {
         return [
             'dependencies' => [
-                \Redis::class => Redis::class,
+            ],
+            'commands' => [
             ],
             'annotations' => [
                 'scan' => [
@@ -25,16 +26,13 @@ class ConfigProvider
                         __DIR__,
                     ],
                 ],
-                'ignore_annotations' => [
-                    'mixin',
-                ],
             ],
             'publish' => [
                 [
-                    'id' => 'config',
-                    'description' => 'The config of redis client.',
-                    'source' => __DIR__ . '/../publish/redis.php',
-                    'destination' => BASE_PATH . '/config/autoload/redis.php',
+                    'id' => 'db',
+                    'description' => 'The config for db.',
+                    'source' => __DIR__ . '/../publish/db.php',
+                    'destination' => BASE_PATH . '/config/autoload/db.php',
                 ],
             ],
         ];

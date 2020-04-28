@@ -24,9 +24,11 @@
         "hyperf/logger": "~1.1.0",
         "hyperf/memory": "~1.1.0",
         "hyperf/process": "~1.1.0",
-        "hyperf/redis": "~1.1.0",
+        "hyperf/redis": "^1.1",
         "overtrue/wechat": "~4.0",
-        "hyperf/session": "^1.1"
+        "hyperf/session": "^1.1",
+        "hyperf/websocket-client": "^1.1",
+        "hyperf/db": "^1.1"
     },
     "require-dev": {
         "swoft/swoole-ide-helper": "^4.2",

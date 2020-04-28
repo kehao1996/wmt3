@@ -9,19 +9,24 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Hyperf\Redis;
+namespace Hyperf\DB;
 
-use Hyperf\Redis\Exception\InvalidRedisConnectionException;
-use Hyperf\Redis\Pool\PoolFactory;
+use Hyperf\DB\Pool\PoolFactory;
+use Hyperf\Utils\ApplicationContext;
 use Hyperf\Utils\Context;
+use Throwable;
 
 /**
- * @mixin \Redis
+ * @method beginTransaction()
+ * @method commit()
+ * @method rollback()
+ * @method insert(string $query, array $bindings = [])
+ * @method execute(string $query, array $bindings = [])
+ * @method query(string $query, array $bindings = [])
+ * @method fetch(string $query, array $bindings = [])
  */
-class Redis
+class DB
 {
-    use ScanCaller;
-
     /**
      * @var PoolFactory
      */
@@ -30,30 +35,27 @@ class Redis
     /**
      * @var string
      */
-    protected $poolName = 'default';
+    protected $poolName;
 
-    public function __construct(PoolFactory $factory)
+    public function __construct(PoolFactory $factory, string $poolName = 'default')
     {
         $this->factory = $factory;
+        $this->poolName = $poolName;
     }
 
     public function __call($name, $arguments)
     {
-        // Get a connection from coroutine context or connection pool.
         $hasContextConnection = Context::has($this->getContextKey());
         $connection = $this->getConnection($hasContextConnection);
 
         try {
             $connection = $connection->getConnection();
-            // Execute the command with the arguments.
             $result = $connection->{$name}(...$arguments);
+        } catch (Throwable $exception) {
+            $result = $connection->retry($exception, $name, $arguments);
         } finally {
-            // Release connection.
             if (! $hasContextConnection) {
                 if ($this->shouldUseSameConnection($name)) {
-                    if ($name === 'select' && $db = $arguments[0]) {
-                        $connection->setDatabase((int) $db);
-                    }
                     // Should storage the connection to coroutine context, then use defer() to release the connection.
                     Context::set($this->getContextKey(), $connection);
                     defer(function () use ($connection) {
@@ -69,35 +71,48 @@ class Redis
         return $result;
     }
 
-    /**
-     * Define the commands that needs same connection to execute.
-     * When these commands executed, the connection will storage to coroutine context.
-     */
-    private function shouldUseSameConnection(string $methodName): bool
+    public static function __callStatic($name, $arguments)
     {
-        return in_array($methodName, [
-            'multi',
-            'pipeline',
-            'select',
+        $container = ApplicationContext::getContainer();
+        $db = $container->get(static::class);
+        return $db->{$name}(...$arguments);
+    }
+
+    /**
+     * Make a new connection with the pool name.
+     */
+    public static function connection(string $poolName): self
+    {
+        return make(static::class, [
+            'poolName' => $poolName,
         ]);
     }
 
     /**
-     * Get a connection from coroutine context, or from redis connectio pool.
-     * @param mixed $hasContextConnection
+     * Define the commands that needs same connection to execute.
+     * When these commands executed, the connection will storage to coroutine context.
      */
-    private function getConnection($hasContextConnection): RedisConnection
+    protected function shouldUseSameConnection(string $methodName): bool
+    {
+        return in_array($methodName, [
+            'beginTransaction',
+            'commit',
+            'rollBack',
+        ]);
+    }
+
+    /**
+     * Get a connection from coroutine context, or from mysql connectio pool.
+     */
+    protected function getConnection(bool $hasContextConnection): AbstractConnection
     {
         $connection = null;
         if ($hasContextConnection) {
             $connection = Context::get($this->getContextKey());
         }
-        if (! $connection instanceof RedisConnection) {
+        if (! $connection instanceof AbstractConnection) {
             $pool = $this->factory->getPool($this->poolName);
             $connection = $pool->get();
-        }
-        if (! $connection instanceof RedisConnection) {
-            throw new InvalidRedisConnectionException('The connection is not a valid RedisConnection.');
         }
         return $connection;
     }
@@ -107,6 +122,6 @@ class Redis
      */
     private function getContextKey(): string
     {
-        return sprintf('redis.connection.%s', $this->poolName);
+        return sprintf('db.connection.%s', $this->poolName);
     }
 }

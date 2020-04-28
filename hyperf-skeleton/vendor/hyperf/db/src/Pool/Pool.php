@@ -9,17 +9,15 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Hyperf\Redis\Pool;
+namespace Hyperf\DB\Pool;
 
 use Hyperf\Contract\ConfigInterface;
-use Hyperf\Contract\ConnectionInterface;
-use Hyperf\Pool\Pool;
-use Hyperf\Redis\Frequency;
-use Hyperf\Redis\RedisConnection;
+use Hyperf\DB\Frequency;
+use Hyperf\Pool\Pool as HyperfPool;
 use Hyperf\Utils\Arr;
 use Psr\Container\ContainerInterface;
 
-class RedisPool extends Pool
+abstract class Pool extends HyperfPool
 {
     /**
      * @var string
@@ -33,16 +31,15 @@ class RedisPool extends Pool
 
     public function __construct(ContainerInterface $container, string $name)
     {
-        $this->name = $name;
         $config = $container->get(ConfigInterface::class);
-        $key = sprintf('redis.%s', $this->name);
+        $key = sprintf('db.%s', $name);
         if (! $config->has($key)) {
             throw new \InvalidArgumentException(sprintf('config[%s] is not exist!', $key));
         }
 
+        $this->name = $name;
         $this->config = $config->get($key);
         $options = Arr::get($this->config, 'pool', []);
-
         $this->frequency = make(Frequency::class);
 
         parent::__construct($container, $options);
@@ -53,8 +50,8 @@ class RedisPool extends Pool
         return $this->name;
     }
 
-    protected function createConnection(): ConnectionInterface
+    public function getConfig(): array
     {
-        return new RedisConnection($this->container, $this, $this->config);
+        return $this->config;
     }
 }

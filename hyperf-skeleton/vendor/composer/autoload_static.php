@@ -109,6 +109,7 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         ),
         'H' => 
         array (
+            'Hyperf\\WebSocketClient\\' => 23,
             'Hyperf\\Utils\\' => 13,
             'Hyperf\\Testing\\' => 15,
             'Hyperf\\Session\\' => 15,
@@ -131,6 +132,7 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
             'Hyperf\\Devtool\\' => 15,
             'Hyperf\\DbConnection\\' => 20,
             'Hyperf\\Database\\' => 16,
+            'Hyperf\\DB\\' => 10,
             'Hyperf\\Contract\\' => 16,
             'Hyperf\\Config\\' => 14,
             'Hyperf\\Command\\' => 15,
@@ -386,6 +388,10 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         array (
             0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
+        'Hyperf\\WebSocketClient\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/websocket-client/src',
+        ),
         'Hyperf\\Utils\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/utils/src',
@@ -473,6 +479,10 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         'Hyperf\\Database\\' => 
         array (
             0 => __DIR__ . '/..' . '/hyperf/database/src',
+        ),
+        'Hyperf\\DB\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hyperf/db/src',
         ),
         'Hyperf\\Contract\\' => 
         array (

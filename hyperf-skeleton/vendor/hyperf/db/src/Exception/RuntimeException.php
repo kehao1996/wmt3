@@ -9,10 +9,8 @@ declare(strict_types=1);
  * @contact  group@hyperf.io
  * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
  */
-namespace Hyperf\Redis;
+namespace Hyperf\DB\Exception;
 
-use Hyperf\Pool\Frequency as DefaultFrequency;
-
-class Frequency extends DefaultFrequency
+class RuntimeException extends \RuntimeException
 {
 }

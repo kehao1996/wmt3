@@ -1,0 +1,16 @@
+[2020-04-28 09:54:18] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=32_Aj90dOL2_EiBq3ocXu30LVJ4w62axgWIGMSXfDAK0WCrIBGdkWyWg_BJrXvhWbsJGsF_1YMtXZHcjx0Kk1Ik3sHA_ESeBYaIaPEodis_R0DKNTpY2iIkwtaiS065oyX5MFPS8B4BMoWuIEL3USBbAJABZI&appid=wx395497f7015b6ef2&secret=f317b9fcc7e42ccc4587ae281b72d386&js_code=0817MVw31ofk1T1pXDx31Ec2x317MVw0&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.5.3 curl/7.64.0 PHP/7.4.5
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Tue, 28 Apr 2020 01:54:18 GMT
+Content-Length: 82
+
+{"session_key":"atowi2KdwX364sY0iAIXVQ==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
+--------
+NULL  
