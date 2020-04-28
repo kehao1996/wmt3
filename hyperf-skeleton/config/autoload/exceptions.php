@@ -15,6 +15,7 @@ return [
         'http' => [
             App\Exception\Handler\AppExceptionHandler::class,
             App\Exception\Handler\TokenValidException::class,
+            App\Exception\Handler\JWTException::class,
         ],
     ],
 ];
