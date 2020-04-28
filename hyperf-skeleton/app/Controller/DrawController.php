@@ -315,9 +315,9 @@ class DrawController extends ApiController
         $prize = $data['prize'];
         foreach($prize_log as $k=>$v){
             $userinfo = $dbUser->get($v['userid']);
-            $prize_log['nickname'] = $userinfo['nickname'];
-            $prize_log['headimg'] = $userinfo['headimg'];
-            $prize_log['prize_info'] = $prize[$v['index']];
+            $prize_log[$k]['nickname'] = $userinfo['nickname'];
+            $prize_log[$k]['headimg'] = $userinfo['headimg'];
+            $prize_log[$k]['prize_info'] = $prize[$v['prizeindex']];
         }
 
         return [
