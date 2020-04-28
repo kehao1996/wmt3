@@ -8,18 +8,14 @@
 
 namespace App\Admin;
 
-use Phper666\JWTAuth\JWT;
+
 use Hyperf\Di\Annotation\Inject;
+use Phper666\JWTAuth\JWT;
 
 
 class ApiController {
 
 
-    /**
-     * Inject()
-     * @var JWT
-     */
-    private $jwt;
 
     protected $config_key = 'WMT_XT_CONFIG';
     protected $admin_key = 'WMT_ADMIN_ID';
@@ -27,7 +23,8 @@ class ApiController {
 
     public function __construct()
     {
-        $data = $this->jwt->getParserData();
+        $jwt = new JWT();
+        $data = $jwt->getParserData();
         if($data['uid'] > 0){
             $this->mid = $data['uid'];
         }
