@@ -14,3 +14,67 @@ Content-Length: 82
 {"session_key":"atowi2KdwX364sY0iAIXVQ==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
 --------
 NULL  
+[2020-04-28 11:03:56] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=32_Aj90dOL2_EiBq3ocXu30LVJ4w62axgWIGMSXfDAK0WCrIBGdkWyWg_BJrXvhWbsJGsF_1YMtXZHcjx0Kk1Ik3sHA_ESeBYaIaPEodis_R0DKNTpY2iIkwtaiS065oyX5MFPS8B4BMoWuIEL3USBbAJABZI&appid=wx395497f7015b6ef2&secret=f317b9fcc7e42ccc4587ae281b72d386&js_code=0015D99h03SeOu12ol9h0i0n9h05D99s&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.5.3 curl/7.64.0 PHP/7.4.5
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Tue, 28 Apr 2020 03:03:56 GMT
+Content-Length: 82
+
+{"session_key":"lexYazNYysRBc8WSiqZDDA==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
+--------
+NULL  
+[2020-04-28 11:05:43] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=32_Aj90dOL2_EiBq3ocXu30LVJ4w62axgWIGMSXfDAK0WCrIBGdkWyWg_BJrXvhWbsJGsF_1YMtXZHcjx0Kk1Ik3sHA_ESeBYaIaPEodis_R0DKNTpY2iIkwtaiS065oyX5MFPS8B4BMoWuIEL3USBbAJABZI&appid=wx395497f7015b6ef2&secret=f317b9fcc7e42ccc4587ae281b72d386&js_code=0817dxzh0eyZWu1IUoAh01vzzh07dxz1&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.5.3 curl/7.64.0 PHP/7.4.5
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Tue, 28 Apr 2020 03:05:43 GMT
+Content-Length: 82
+
+{"session_key":"lexYazNYysRBc8WSiqZDDA==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
+--------
+NULL  
+[2020-04-28 11:06:37] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=32_Aj90dOL2_EiBq3ocXu30LVJ4w62axgWIGMSXfDAK0WCrIBGdkWyWg_BJrXvhWbsJGsF_1YMtXZHcjx0Kk1Ik3sHA_ESeBYaIaPEodis_R0DKNTpY2iIkwtaiS065oyX5MFPS8B4BMoWuIEL3USBbAJABZI&appid=wx395497f7015b6ef2&secret=f317b9fcc7e42ccc4587ae281b72d386&js_code=001RgFDe0P7Wov1BH1Fe0MOEDe0RgFDd&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.5.3 curl/7.64.0 PHP/7.4.5
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Tue, 28 Apr 2020 03:06:37 GMT
+Content-Length: 82
+
+{"session_key":"Z+AkeFj3ywnBx5HmMvDQRQ==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
+--------
+NULL  
+[2020-04-28 11:27:14] NULL.INFO: >>>>>>>>
+GET /sns/jscode2session?access_token=32_Aj90dOL2_EiBq3ocXu30LVJ4w62axgWIGMSXfDAK0WCrIBGdkWyWg_BJrXvhWbsJGsF_1YMtXZHcjx0Kk1Ik3sHA_ESeBYaIaPEodis_R0DKNTpY2iIkwtaiS065oyX5MFPS8B4BMoWuIEL3USBbAJABZI&appid=wx395497f7015b6ef2&secret=f317b9fcc7e42ccc4587ae281b72d386&js_code=021HfFRG0J967g2XoDUG0EcvRG0HfFRL&grant_type=authorization_code HTTP/1.1
+Host: api.weixin.qq.com
+User-Agent: GuzzleHttp/6.5.3 curl/7.64.0 PHP/7.4.5
+
+
+<<<<<<<<
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: text/plain
+Date: Tue, 28 Apr 2020 03:27:14 GMT
+Content-Length: 82
+
+{"session_key":"G4aCGZp77bdL2XTcbWPfJw==","openid":"o_vjc4jpmRQZt8DWCnnwnGCx5Mrk"}
+--------
+NULL  

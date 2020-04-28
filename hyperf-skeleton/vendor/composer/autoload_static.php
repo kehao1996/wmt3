@@ -80,6 +80,7 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
             'Prophecy\\' => 9,
+            'Phper666\\JWTAuth\\' => 17,
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
             'PhpDocReader\\' => 13,
@@ -99,6 +100,7 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         ),
         'L' => 
         array (
+            'Lcobucci\\JWT\\' => 13,
             'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\Stdlib\\' => 15,
             'Laminas\\Mime\\' => 13,
@@ -332,6 +334,10 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         array (
             0 => __DIR__ . '/..' . '/phpspec/prophecy/src/Prophecy',
         ),
+        'Phper666\\JWTAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phper666/jwt-auth/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -371,6 +377,10 @@ class ComposerStaticInitfeeb0b3028abd8af68c5338a2f18fe2b
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
         ),
         'Laminas\\ZendFrameworkBridge\\' => 
         array (

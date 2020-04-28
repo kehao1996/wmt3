@@ -62,6 +62,7 @@ final class Versions
   'laminas/laminas-mime' => '2.7.4@e45a7d856bf7b4a7b5bd00d6371f9961dc233add',
   'laminas/laminas-stdlib' => '3.2.1@2b18347625a2f06a1a485acfbc870f699dbe51c6',
   'laminas/laminas-zendframework-bridge' => '1.0.3@bfbbdb6c998d50dbf69d2187cb78a5f1fa36e1e9',
+  'lcobucci/jwt' => '3.3.1@a11ec5f4b4d75d1fcd04e133dede4c317aac9e18',
   'monolog/monolog' => '1.25.3@fa82921994db851a8becaf3787a9e73c5976b6f1',
   'nesbot/carbon' => '2.32.2@f10e22cf546704fab1db4ad4b9dedbc5c797a0dc',
   'nikic/fast-route' => 'v1.3.0@181d480e08d9476e61381e04a71b34dc0432e812',
@@ -72,6 +73,7 @@ final class Versions
   'phpdocumentor/reflection-common' => '2.0.0@63a995caa1ca9e5590304cd845c15ad6d482a62a',
   'phpdocumentor/reflection-docblock' => '5.1.0@cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e',
   'phpdocumentor/type-resolver' => '1.1.0@7462d5f123dfc080dfdf26897032a6513644fc95',
+  'phper666/jwt-auth' => 'v3.0.2@376dbcdc3ff2ed6c4afdf43615d173307f90526c',
   'phpoption/phpoption' => '1.7.3@4acfd6a4b33a509d8c88f50e5222f734b6aeebae',
   'pimple/pimple' => 'v3.3.0@e55d12f9d6a0e7f9c85992b73df1267f46279930',
   'psr/cache' => '1.0.1@d11b50ad223250cf17b86e38383413f5a6764bf8',
@@ -164,7 +166,7 @@ final class Versions
   'symfony/process' => 'v5.0.7@c5ca4a0fc16a0c888067d43fbcfe1f8a53d8e70e',
   'symfony/stopwatch' => 'v5.0.7@a1d86d30d4522423afc998f32404efa34fcf5a73',
   'theseer/tokenizer' => '1.1.3@11336f6f84e16a720dae9d8e6ed5019efa85a0f9',
-  'hyperf/hyperf-skeleton' => 'dev-master@e998c0ebdc5082b34ca23aeb5961a89faf1e3d9e',
+  'hyperf/hyperf-skeleton' => 'dev-master@a86db3f86f03c8101c36bf64f9d397a4f8defed5',
 );
 
     private function __construct()
