@@ -65,8 +65,8 @@ class User
                 'id' => $id
             ])->getOne();
             if ($list) {
-                $this->hMset($key, $list);
-                $this->expire($key, 864000); //保存10天
+                $this->redis->hMset($key, $list);
+                $this->redis->expire($key, 864000); //保存10天
             }
         }
         return $list;
