@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface;
 use Throwable;
 
 
-class AppTokenValidExceptionHandler extends ExceptionHandler {
+class TokenValidException extends ExceptionHandler {
 
 
     public function handle(Throwable $throwable, ResponseInterface $response) {
