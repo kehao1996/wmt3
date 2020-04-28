@@ -76,12 +76,14 @@ class DrawController extends ApiController
         $userinfo = $dbUser->get($userid);
         $user_draw = $dbUser->getUserDraw($userid);
 
+        echo $user_draw;
 
         $container = ApplicationContext::getContainer();
         $redis = $container->get(RedisFactory::class)->get('default');
         $data = $redis->get($this->config_key);
         $data = unserialize($data);
         $draw_day_count = !empty($data['draw_day_count']) ?? 0;
+        echo '_' . $draw_day_count;
 
         //每天抽奖次数 - 已经抽奖次数 = 还剩抽奖次数
         $draw_count = $draw_day_count - $user_draw;
