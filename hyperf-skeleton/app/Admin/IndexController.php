@@ -19,6 +19,7 @@ use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
 use \Phper666\JWTAuth\JWT;
+use \Phper666\JWTAuth\Middleware\JWTAuthMiddleware;
 
 
 
@@ -116,6 +117,7 @@ class IndexController extends ApiController
 
     /**
      * @RequestMapping(path="setConfig", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function setConfig(RequestInterface $request){
         $data['wxh'] = $request->input('wxh','');
@@ -144,6 +146,7 @@ class IndexController extends ApiController
 
     /**
      * @RequestMapping(path="getConfig", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function getConfig(RequestInterface $request){
 
@@ -174,6 +177,8 @@ class IndexController extends ApiController
     /**
      * 域名 /admin/loginout
      *
+     * 退出
+     *
      */
 
     /**
@@ -187,14 +192,12 @@ class IndexController extends ApiController
 
     public function checkLogin(){
         $data = [
-            'code' => 0,
-            'msg' => 'success',
-            'data' => $this->jwt->getParserData()
+            'Status' => 200,
+            'Msg' => 'success',
+            'Data' => $this->jwt->getParserData()
         ];
         return $data;
 
     }
-
-
 
 }
