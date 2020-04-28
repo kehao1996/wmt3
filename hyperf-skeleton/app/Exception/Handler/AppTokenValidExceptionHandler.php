@@ -22,10 +22,9 @@ class AppTokenValidExceptionHandler extends ExceptionHandler {
 //            ->withBody(new SwooleStream($this->helper->jsonEncode($result)));
 
 
-        return $response->withHeader("Server", "Hyperf")->withStatus(403)->withBody(new SwooleStream(json_encode([
-            'Status' => 403,
-            'Msg' => '未登录'
-        ])));
+
+
+        return $response->withHeader("Server", "Hyperf")->withStatus(403)->withBody(new SwooleStream('未登录'));
     }
 
     public function isValid(Throwable $throwable): bool {
