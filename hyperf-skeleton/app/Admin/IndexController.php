@@ -19,7 +19,8 @@ use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
 use \Phper666\JWTAuth\JWT;
-use Psr\Http\Message\ResponseInterface;
+
+
 
 /**
  * @Controller(prefix = "admin")
@@ -27,12 +28,6 @@ use Psr\Http\Message\ResponseInterface;
 class IndexController extends ApiController
 {
 
-
-    /**
-     * @Inject()
-     * @var ResponseInterface
-     */
-    private $response;
 
     /**
      * @Inject()
@@ -96,7 +91,8 @@ class IndexController extends ApiController
             ]
         ];
 
-        return $this->response->json($data);
+        return $data;
+
     }
 
     /**
