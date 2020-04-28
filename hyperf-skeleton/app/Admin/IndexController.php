@@ -191,7 +191,8 @@ class IndexController extends ApiController
             'msg' => 'success',
             'data' => $this->jwt->getParserData()
         ];
-        return $this->response->json($data);
+        return $data;
+
     }
 
 
