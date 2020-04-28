@@ -12,6 +12,7 @@
 
 namespace App\Controller;
 
+use App\Drive\Pdo;
 use App\Model\PrizeLog;
 use App\Model\User;
 use Hyperf\HttpServer\Contract\RequestInterface;
@@ -114,6 +115,7 @@ class DrawController extends ApiController
      * DrawDayCount //每日抽奖次数
      * DrawDayNum //每日抽奖人数
      * SyDrawCount //剩余可抽奖人数
+     * DrawZonNum //参与总人数
      *
      * Msg
      * </pre>
@@ -153,7 +155,8 @@ class DrawController extends ApiController
                 'Prize' => $data['prize'],
                 'DrawDayCount' => $data['draw_day_count'],
                 'DrawDayNum' => $data['draw_day_num'],
-                'SyDrawCount' => $sy_draw_cont
+                'SyDrawCount' => $sy_draw_cont,
+                'DrawZonNum' => $draw_count
             ],
             'Msg' => '获取成功'
         ];
@@ -244,8 +247,6 @@ class DrawController extends ApiController
         $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
 
         $index = getPrize($draw_price);
-        var_dump($draw_price);
-        var_dump($index);
 
         $prize_info = $prize[$index];
         if(!empty($prize_info)){ //中奖
@@ -273,6 +274,62 @@ class DrawController extends ApiController
             ];
         }
     }
+
+    /**
+     * 获取中奖记录
+     * 域名 /user/getPrizeLog
+     * <pre>
+     * POST
+     *
+     * </pre>
+     *
+     *
+     * @RequestMapping(path="getPrizeLog",methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+    public function getPrizeLog(){
+        $parse_data = $this->jwt->getParserData();
+        $userid = $parse_data['uid'];
+        $pdo = new Pdo();
+        $prize_log = $pdo->clear()->select('*')->from('prize_log')->where([
+            'userid' => $userid
+        ])->limit(100)->ordder('id desc')->getAll();
+
+        $dbUser = new User();
+
+        $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+        $redis = $container->get(RedisFactory::class)->get('default');
+        $data = $redis->get($this->config_key);
+        if (!$data) {
+            return [
+                'Status' => 201,
+                'Msg' => '未配置参数'
+            ];
+        }
+
+        $data = unserialize($data);
+        $data['prize'] = json_decode($data['prize'], true);
+
+        $prize = $data['prize'];
+        foreach($prize_log as $k=>$v){
+            $userinfo = $dbUser->get($v['userid']);
+            $prize_log['nickname'] = $userinfo['nickname'];
+            $prize_log['headimg'] = $userinfo['headimg'];
+            $prize_log['prize_info'] = $prize[$v['index']];
+        }
+
+        return [
+            'Status' => 200,
+            'Data' => [
+                'Result' => $prize_log
+            ],
+            'Msg' => '获取成功'
+        ];
+
+    }
+
 
 
 }
