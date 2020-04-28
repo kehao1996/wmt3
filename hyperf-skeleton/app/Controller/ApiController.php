@@ -15,4 +15,10 @@ class ApiController {
 
     protected $config_key = 'WMT_XT_CONFIG';
     protected $user_key = 'WMT_USER_ID';
+
+    protected $mid = 0;
+
+    public function __construct()
+    {
+    }
 }

@@ -198,7 +198,7 @@ class IndexController extends ApiController
         $data = [
             'Status' => 200,
             'Msg' => 'success',
-            'Data' => $this->jwt->getParserData()
+            'UserId' => $this->mid
         ];
         return $data;
 

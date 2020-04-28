@@ -20,6 +20,10 @@ use Hyperf\Di\Annotation\Inject;
 use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
 use EasyWeChat\Factory;
+use \Phper666\JWTAuth\JWT;
+use \Phper666\JWTAuth\Middleware\JWTAuthMiddleware;
+use Hyperf\HttpServer\Annotation\Middlewares;
+use Hyperf\HttpServer\Annotation\Middleware;
 
 
 /**
@@ -30,9 +34,16 @@ class UserController extends ApiController
 
     /**
      * @Inject()
+     * @var JWT
+     */
+    private $jwt;
+
+    /**
+     * @Inject()
      * @var \Hyperf\Contract\SessionInterface
      */
     private $session;
+
 
     /**
      * 域名: /user/login
@@ -45,13 +56,10 @@ class UserController extends ApiController
      * <pre>
      * Status 200 //成功
      * Status 201 //失败
-     * </pre>
-     */
-
-
-    /**
+     *
      * @RequestMapping(path="login", methods="post,options")
      */
+
     public function login(RequestInterface $request)
     {
 
@@ -107,17 +115,21 @@ class UserController extends ApiController
 
             $userid = $dbUser->getidByOpenid($openid);
             if($userid){
-                $this->session->set($this->user_key, $userid);
-                $sessionid = $this->session->getId();
-                return [
-                    'Status' => 200,
-                    'UserInfo' => [
-                        'userid' => $userid,
-                        'openid' => $openid
-                    ],
-                    'Msg' => '登录成功',
-                    'Phpesessid' => $sessionid
+                $userData = [
+                    'uid' => $userid,
+                    'openid' => $openid
                 ];
+
+                $token = $this->jwt->setScene('default')->getToken($userData);
+                $data = [
+                    'Status' => 200,
+                    'msg' => '登录成功',
+                    'Data' => [
+                        'token' => $token,
+                        'exp' => $this->jwt->getTTL(),
+                    ]
+                ];
+                return $data;
             }
 
             return [
@@ -134,33 +146,27 @@ class UserController extends ApiController
         }
     }
 
+
+
+
     /**
      * 域名:/user/updateInfo
      * 修改个人信息
      * headimg //头像
      * nickname //名称
      * sex //性别
-     */
-
-    /**
+     *
      * @RequestMapping(path="updateInfo", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function updateInfo(RequestInterface $request){
-        if (!$this->session->get($this->user_key)) {
-            return [
-                'Status' => 403,
-                'Msg' => '未登入'
-            ];
-        }
-
-
 
         $data['headimg'] = $request->input('headimg','');
         $data['nickname'] = $request->input('nickname','');
         $data['sex'] = $request->input('sex',0);
 
         $dbUser = new User();
-        $dbUser->edit($data,$this->session->get($this->user_key));
+        $dbUser->edit($data);
 
         return [
             'Status' => 200,
@@ -179,12 +185,6 @@ class UserController extends ApiController
      */
     public function getConfig(RequestInterface $request)
     {
-        if (!$this->session->get($this->user_key)) {
-            return [
-                'Status' => 403,
-                'Msg' => '未登入'
-            ];
-        }
 
         $container = ApplicationContext::getContainer();
 
