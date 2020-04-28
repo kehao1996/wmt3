@@ -117,7 +117,9 @@ class IndexController extends ApiController
 
     /**
      * @RequestMapping(path="setConfig", methods="post,options")
-     * @Middleware(JWTAuthMiddleware::class)
+     * @Middlewares({
+     *     @Middleware(JWTAuthMiddleware::class)
+     * })
      */
     public function setConfig(RequestInterface $request){
         $data['wxh'] = $request->input('wxh','');
