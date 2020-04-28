@@ -216,6 +216,7 @@ class DrawController extends ApiController
 
         $dbUser = new User();
         $draw_count = $dbUser->returnUserDraw();
+        $draw_count = count($draw_count);
         if($draw_count >= $data['draw_day_num']) { //今日抽奖人数已满
             if(!$dbUser->isUserDraw($userid)){
                 return [
