@@ -87,7 +87,7 @@ class UserController extends ApiController
                 ];
             }
 
-            $openid = $request['openid'];
+            $openid = $result['openid'];
             $dbUser = new User();
             $userid = $dbUser->getidByOpenid($openid);
             if (!$userid) { //不存在添加
