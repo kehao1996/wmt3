@@ -181,7 +181,7 @@ class User
      */
     public function returnUserDraw(){
         $key = $this->key .'UserDrawList:' . date('Y-m-d');
-        return $this->redis->sCard($key);
+        return $this->redis->sMembers($key);
     }
 
 

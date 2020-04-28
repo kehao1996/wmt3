@@ -113,6 +113,7 @@ class DrawController extends ApiController
      * Prize //奖品信息
      * DrawDayCount //每日抽奖次数
      * DrawDayNum //每日抽奖人数
+     * SyDrawCount //剩余可抽奖人数
      *
      * Msg
      * </pre>
@@ -138,13 +139,21 @@ class DrawController extends ApiController
         $data = unserialize($data);
         $data['prize'] = json_decode($data['prize'], true);
 
+        $dbUser = new User();
+        $user_list = $dbUser->returnUserDraw();
+        $draw_count = count($user_list);
+
+        $sy_draw_cont = $data['draw_day_num'] - $draw_count;
+        $sy_draw_cont = empty($sy_draw_cont) ? 0 : $sy_draw_cont;
+
 
         return [
             'Status' => 200,
             'Data' => [
                 'Prize' => $data['prize'],
                 'DrawDayCount' => $data['draw_day_count'],
-                'DrawDayNum' => $data['draw_day_num']
+                'DrawDayNum' => $data['draw_day_num'],
+                'SyDrawCount' => $sy_draw_cont
             ],
             'Msg' => '获取成功'
         ];
