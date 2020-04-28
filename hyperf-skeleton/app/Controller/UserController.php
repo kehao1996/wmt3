@@ -33,7 +33,6 @@ class UserController extends ApiController
      * @var \Hyperf\Contract\SessionInterface
      */
     private $session;
-    private $mid ;
 
     /**
      * 域名: /user/login
@@ -49,13 +48,6 @@ class UserController extends ApiController
      * </pre>
      */
 
-    public function __construct()
-    {
-        $userid = $this->session->get($this->user_key);
-        if($userid){
-            $this->mid = $userid;
-        }
-    }
 
     /**
      * @RequestMapping(path="login", methods="post,options")
@@ -145,14 +137,16 @@ class UserController extends ApiController
     /**
      * 域名:/user/updateInfo
      * 修改个人信息
-     *
+     * headimg //头像
+     * nickname //名称
+     * sex //性别
      */
 
     /**
      * @RequestMapping(path="updateInfo", methods="post,options")
      */
     public function updateInfo(RequestInterface $request){
-        if (!$this->mid) {
+        if (!$this->session->get($this->user_key)) {
             return [
                 'Status' => 403,
                 'Msg' => '未登入'
@@ -166,7 +160,7 @@ class UserController extends ApiController
         $data['sex'] = $request->input('sex',0);
 
         $dbUser = new User();
-        $dbUser->edit($data,$this->mid);
+        $dbUser->edit($data,$this->session->get($this->user_key));
 
         return [
             'Status' => 200,
