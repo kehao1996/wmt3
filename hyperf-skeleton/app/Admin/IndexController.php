@@ -60,9 +60,6 @@ class IndexController extends ApiController
      * </pre>
      */
 
-    /**
-     * @RequestMapping(path="login", methods="post,options")
-     */
     public function login(RequestInterface $request)
     {
 
