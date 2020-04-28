@@ -94,7 +94,7 @@ class DrawController extends ApiController
             'Status' => 200,
             'Data' => [
                 'UserInfo' => $userinfo,
-                'DrawCount' => $draw_count
+                'DrawCount' => intval($draw_count)
             ],
             'Msg' => '获取成功'
         ];
@@ -244,6 +244,8 @@ class DrawController extends ApiController
         $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
 
         $index = getPrize($draw_price);
+        var_dump($draw_price);
+        var_dump($index);
 
         $prize_info = $prize[$index];
         if(!empty($prize_info)){ //中奖
@@ -256,7 +258,7 @@ class DrawController extends ApiController
             return [
                 'Status' => 200,
                 'Data' => [
-                    'Index' => $index,
+                    'Index' => intval($index),
                     'Prize' => $prize[$index]
                 ],
                 'Msg' => '获取成功'
