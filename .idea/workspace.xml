@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wmt3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wmt3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/db.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +175,8 @@
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/logger" />
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/database" />
       <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/di" />
+      <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/db" />
+      <path value="$PROJECT_DIR$/hyperf-skeleton/vendor/hyperf/websocket-client" />
     </include_path>
   </component>
   <component name="ProjectId" id="1b9Ha5Bvxo3mtzb7kHAccA3G8xp" />
@@ -211,7 +215,7 @@
       <updated>1588037449257</updated>
       <workItem from="1588037450369" duration="24000" />
       <workItem from="1588037474990" duration="107000" />
-      <workItem from="1588037666532" duration="3683000" />
+      <workItem from="1588037666532" duration="4354000" />
     </task>
     <servers />
   </component>
