@@ -94,7 +94,7 @@ class DrawController extends ApiController
             'Status' => 200,
             'Data' => [
                 'UserInfo' => $userinfo,
-                'DrawCount' => $draw_count
+                'DrawCount' => intval($draw_count)
             ],
             'Msg' => '获取成功'
         ];
