@@ -293,7 +293,7 @@ class DrawController extends ApiController
         $pdo = new Pdo();
         $prize_log = $pdo->clear()->select('*')->from('prize_log')->where([
             'userid' => $userid
-        ])->limit(100)->ordder('id desc')->getAll();
+        ])->limit(100)->order('id desc')->getAll();
 
         $dbUser = new User();
 
