@@ -34,6 +34,12 @@ class IndexController extends ApiController
 
     /**
      * @Inject()
+     * @var JWT
+     */
+    private $jwt;
+
+    /**
+     * @Inject()
      * @var \Hyperf\Contract\SessionInterface
      */
     private $session;
@@ -192,7 +198,7 @@ class IndexController extends ApiController
         $data = [
             'Status' => 200,
             'Msg' => 'success',
-            'UserId' => $this->mid
+            'Data' => $this->jwt->getParserData()
         ];
         return $data;
 
