@@ -34,12 +34,6 @@ class IndexController extends ApiController
 
     /**
      * @Inject()
-     * @var JWT
-     */
-    private $jwt;
-
-    /**
-     * @Inject()
      * @var \Hyperf\Contract\SessionInterface
      */
     private $session;
