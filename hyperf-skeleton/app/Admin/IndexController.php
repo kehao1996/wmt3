@@ -188,9 +188,7 @@ class IndexController extends ApiController
     }
 
 
-    /**
-     * @RequestMapping(path="checkLogin", methods="get,post,options")
-     */
+
     public function checkLogin(){
         $data = [
             'code' => 0,
