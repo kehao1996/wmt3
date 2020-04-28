@@ -49,7 +49,7 @@ class UserController extends ApiController
      * 登录
      * @url: /user/login
      * POST
-     * @param string jscode //小程序code
+     * @param string js_code //小程序code
      *
      * @return string json
      *
@@ -59,7 +59,6 @@ class UserController extends ApiController
      *
      * @RequestMapping(path="login", methods="post,options")
      */
-
     public function login(RequestInterface $request)
     {
 
@@ -123,7 +122,7 @@ class UserController extends ApiController
                 $token = $this->jwt->setScene('default')->getToken($userData);
                 $data = [
                     'Status' => 200,
-                    'msg' => '登录成功',
+                    'Msg' => '登录成功',
                     'Data' => [
                         'token' => $token,
                         'exp' => $this->jwt->getTTL(),
@@ -147,6 +146,38 @@ class UserController extends ApiController
     }
 
 
+    /**
+     * 获取token
+     *
+     * <pre>
+     * POST
+     * openid
+     * </pre>
+     *
+     * @RequestMapping(path="getToken",methods="post,options")
+     */
+    public function getToken(RequestInterface $request){
+        $openid = $request->input('openid','');
+        $dbUser = new User();
+        $userid = $dbUser->getidByOpenid($openid);
+        if($userid){
+            $userData = [
+                'uid' => $userid,
+                'openid' => $openid
+            ];
+
+            $token = $this->jwt->setScene('default')->getToken($userData);
+            $data = [
+                'Status' => 200,
+                'Msg' => '登录成功',
+                'Data' => [
+                    'token' => $token,
+                    'exp' => $this->jwt->getTTL(),
+                ]
+            ];
+            return $data;
+        }
+    }
 
 
     /**

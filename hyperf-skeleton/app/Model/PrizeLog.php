@@ -11,21 +11,18 @@ namespace App\Model;
 use App\Drive\Pdo;
 use App\Drive\Redis;
 
-class User
+class PrizeLog
 {
 
 
     private $pdo = null;
     private $redis = null;
-    private $key = 'MTW_USER_';
-    private $_table = 'user';
+    private $key = 'MTW_PRIZELOG_';
+    private $_table = 'prize_log';
     private $_field = array(
-        'nickname' => '', //名称
-        'headimg' => '', //头像
-        'sex' => 1,  //性别
-        'status' => 1, //状态
+        'userid' => '', //用户id
+        'prizeindex' => '', //奖品下标
         'createtime' => '', //创建时间
-        'openid' => '' //openid
     );
 
     private function checkField($data = []): array
@@ -142,47 +139,5 @@ class User
         }
         return false;
     }
-
-    /**
-     * 获取当前用户当前抽奖次数
-     */
-    public function getUserDraw($userid){
-        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
-        if(!$this->redis->exists($key)){
-            return 0;
-        }
-
-        return $this->redis->get($key);
-    }
-
-    /**
-     * 设置当前用户抽奖次数
-     */
-    public function setUserDraw($userid,$count = 1){
-        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
-        return true;
-    }
-
-    /**
-     * 设置当前活动抽奖人数
-     *
-     */
-    public function addUserDraw($userid){
-        $key = $this->key .'UserDrawList:' . date('Y-m-d');
-        $this->redis->sAdd($key,$userid);
-        $this->redis->expire($key,86400);
-        return true;
-    }
-
-    /**
-     * 获取当前抽奖人数
-     */
-    public function returnUserDraw(){
-        $key = $this->key .'UserDrawList:' . date('Y-m-d');
-        return $this->redis->sCard($key);
-    }
-
 
 }
