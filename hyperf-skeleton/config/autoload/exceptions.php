@@ -13,9 +13,8 @@ declare(strict_types=1);
 return [
     'handler' => [
         'http' => [
-            App\Exception\Handler\AppExceptionHandler::class,
             App\Exception\Handler\TokenValidException::class,
-            App\Exception\Handler\JWTException::class,
+            App\Exception\Handler\AppExceptionHandler::class,
         ],
     ],
 ];

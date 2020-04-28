@@ -27,7 +27,6 @@ class TokenValidException extends  ExceptionHandler
             return $response->withStatus(403)->withBody(new SwooleStream($data));
         }
 
-        $this->stopPropagation();
         // 交给下一个异常处理器
         return $response;
 
