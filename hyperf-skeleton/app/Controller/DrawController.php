@@ -318,6 +318,7 @@ class DrawController extends ApiController
             $prize_log[$k]['nickname'] = $userinfo['nickname'];
             $prize_log[$k]['headimg'] = $userinfo['headimg'];
             $prize_log[$k]['prize_info'] = $prize[$v['prizeindex']];
+            unset($prize_log[$k]['prize_info']['Rate']);
         }
 
         return [
