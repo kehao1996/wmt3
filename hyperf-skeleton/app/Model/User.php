@@ -184,5 +184,16 @@ class User
         return $this->redis->sMembers($key);
     }
 
+    /**
+     * 判断自己今天是否抽奖了
+     */
+    public function isUserDraw($userid){
+        $key = $this->key .'UserDrawList:' . date('Y-m-d');
+        if($this->redis->sIsMember($key,$userid)){
+            return true;
+        }
+        return false;
+    }
+
 
 }

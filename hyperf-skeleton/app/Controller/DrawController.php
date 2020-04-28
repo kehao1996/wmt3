@@ -214,6 +214,34 @@ class DrawController extends ApiController
             ];
         }
 
+        $dbUser = new User();
+        $draw_count = $dbUser->returnUserDraw();
+        if($draw_count >= $data['draw_day_num']) { //今日抽奖人数已满
+            if(!$dbUser->isUserDraw($userid)){
+                return [
+                    'Status' => 201,
+                    'Data' => null,
+                    'Msg' => '今日抽奖人数已满,请明天来'
+                ];
+            }
+        }
+
+
+        $draw_user_count = $dbUser->getUserDraw($userid);
+        $k_draw_count = $data['draw_day_count'] - $draw_user_count ; //可以抽奖次数
+        if(!$k_draw_count){
+            return [
+                'Status' => 201,
+                'Data' => [
+                    'count' => $k_draw_count
+                ],
+                'Msg' => '可抽奖次数不足,请明天来'
+            ];
+        }
+
+        $dbUser->addUserDraw($userid); //增加用户到抽奖池
+        $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
+
         $index = getPrize($draw_price);
 
         $prize_info = $prize[$index];
@@ -241,8 +269,6 @@ class DrawController extends ApiController
                 'Msg' => '异常'
             ];
         }
-
-
     }
 
 
