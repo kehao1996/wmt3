@@ -20,6 +20,7 @@ use Hyperf\Utils\ApplicationContext;
 use Hyperf\Redis\RedisFactory;
 use \Phper666\JWTAuth\JWT;
 use \Phper666\JWTAuth\Middleware\JWTAuthMiddleware;
+use Hyperf\HttpServer\Annotation\Middlewares;
 
 
 
