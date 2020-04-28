@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use App\Exception\FooException;
 use Throwable;
 
-class TokenValidException extends  ExceptionHandler
+class TokenValidExceptionHandler extends  ExceptionHandler
 {
     public function handle(Throwable $throwable, ResponseInterface $response)
     {
