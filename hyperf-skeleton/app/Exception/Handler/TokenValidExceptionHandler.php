@@ -7,7 +7,7 @@ namespace App\Exception\Handler;
 use Hyperf\ExceptionHandler\ExceptionHandler;
 use Hyperf\HttpMessage\Stream\SwooleStream;
 use Psr\Http\Message\ResponseInterface;
-use App\Exception\FooException;
+use App\Exception\TokenValidException;
 use Throwable;
 
 class TokenValidExceptionHandler extends  ExceptionHandler
