@@ -19,15 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/wmt3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wmt3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/jwt.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/jwt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/middlewares.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/config/autoload/middlewares.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/config/routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/config/routes.php" afterDir="false" />
-    </list>
+    <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -220,7 +212,7 @@
       <updated>1588037449257</updated>
       <workItem from="1588037450369" duration="24000" />
       <workItem from="1588037474990" duration="107000" />
-      <workItem from="1588037666532" duration="8658000" />
+      <workItem from="1588037666532" duration="8800000" />
     </task>
     <servers />
   </component>
