@@ -130,6 +130,8 @@ class IndexController extends ApiController
         $data['wxh'] = $request->input('wxh','');
         $data['prize'] = $request->input('prize','');
         $data['share_status'] = $request->input('share_status',0);
+        $data['draw_day_count'] = $request->input('draw_day_count',0);
+        $data['draw_day_num'] = $request->input('draw_day_num',0);
 
 
 
