@@ -18,7 +18,4 @@ class ApiController {
 
     protected $mid = 0;
 
-    public function __construct()
-    {
-    }
 }

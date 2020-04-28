@@ -46,10 +46,10 @@ class UserController extends ApiController
 
 
     /**
-     * 域名: /user/login
+     * 登录
+     * @url: /user/login
      * POST
-     * jscode //用户名
-     * password //密码
+     * @param string jscode //小程序code
      *
      * @return string json
      *
@@ -150,8 +150,8 @@ class UserController extends ApiController
 
 
     /**
-     * 域名:/user/updateInfo
      * 修改个人信息
+     * @url:/user/updateInfo
      * headimg //头像
      * nickname //名称
      * sex //性别
@@ -161,12 +161,15 @@ class UserController extends ApiController
      */
     public function updateInfo(RequestInterface $request){
 
+        $parser_data = $this->jwt->getParserData();
+        $userid = $parser_data['uid'];
+
         $data['headimg'] = $request->input('headimg','');
         $data['nickname'] = $request->input('nickname','');
         $data['sex'] = $request->input('sex',0);
 
         $dbUser = new User();
-        $dbUser->edit($data);
+        $dbUser->edit($data,$userid);
 
         return [
             'Status' => 200,
@@ -175,13 +178,44 @@ class UserController extends ApiController
     }
 
 
-
     /**
-     * 域名:/user/getConfig
+     * 获取用户信息
+     * @url /user/getUserInfo
+     *
+     * @return string json
+     *
+     * <pre>
+     * {
+     * Status 200
+     * Msg : 获取成功
+     * Data : 个人信息
+     * }
+     * </pre>
+     *
+     *
+     * @RequestMapping(path="getUserInfo",methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
+    public function getUserInfo(){
+        $pare_data = $this->jwt->getParserData();
+        $userid = $pare_data['uid'];
+        $dbUser = new User();
+        $userinfo = $dbUser->get($userid);
+
+        return [
+            'Status' => 200,
+            'Data' => $userinfo,
+            'Msg' => '获取成功'
+        ];
+    }
+
 
     /**
+     * 获取基本配置
+     * @url /user/getConfig
+     *
      * @RequestMapping(path="getConfig", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function getConfig(RequestInterface $request)
     {
@@ -212,17 +246,25 @@ class UserController extends ApiController
 
 
     /**
+     * 抽奖
+     * @url /user/draw
+     *
+     * @return string json
+     *
+     * <pre>
+     * Status 200 异常201
+     * Index  0 //中将下标
+     * Prize [] //奖品信息
+     * </pre>
+     *
      * @RequestMapping(path="draw", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function draw()
     {
-//        if(!$this->session->get($this->user_key)){
-//            return [
-//                'Status' => 403,
-//                'Msg' => '未登入'
-//            ];
-//        }
 
+        $parser_data = $this->jwt->getParserData();
+        $userid = $parser_data['uid'];
 
         $container = ApplicationContext::getContainer();
 
