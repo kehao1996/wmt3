@@ -12,6 +12,7 @@
 
 namespace App\Controller;
 
+use App\Model\User;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
@@ -24,7 +25,7 @@ use EasyWeChat\Factory;
 /**
  * @Controller(prefix = "user")
  */
-class UserController extends  ApiController
+class UserController extends ApiController
 {
 
     /**
@@ -53,66 +54,78 @@ class UserController extends  ApiController
     public function login(RequestInterface $request)
     {
 
-        $js_code = $request->input('js_code','');
-        if(empty($js_code)){
+        $js_code = $request->input('js_code', '');
+        if (empty($js_code)) {
             return [
                 'Status' => 201,
                 'Msg' => '参数异常 js_code'
             ];
         }
 
-        try{
+        try {
+
+            $config = [
+                'app_id' => 'wx395497f7015b6ef2',
+                'secret' => 'f317b9fcc7e42ccc4587ae281b72d386',
+
+                // 下面为可选项
+                // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
+                'response_type' => 'array',
+                'log' => [
+                    'level' => 'debug',
+                    'file' => __DIR__ . '/wechat.log',
+                ],
+            ];
+
+            $app = Factory::miniProgram($config);
+            $result = $app->auth->session($js_code);
+
+            if (empty($result['openid'])) {
+                return [
+                    'Status' => 201,
+                    'Msg' => 'openid 异常'
+                ];
+            }
+
+            $openid = $request['openid'];
+            $dbUser = new User();
+            $userid = $dbUser->getidByOpenid($openid);
+            if (!$userid) { //不存在添加
+                $data = [
+                    'openid' => $openid
+                ];
+                $status = $dbUser->add($data);
+                if(!$status){
+                    return [
+                        'Status' => 201,
+                        'Msg' => '添加失败'
+                    ];
+                }
+            }
+
+            $userid = $dbUser->getidByOpenid($openid);
+            if($userid){
+                $this->session->set($this->user_key, $userid);
+                $sessionid = $this->session->getId();
+                return [
+                    'Status' => 200,
+                    'Msg' => '登录成功',
+                    'Phpesessid' => $sessionid
+                ];
+            }
+
+            return [
+                'Status' => 201,
+                'Msg' => 'error'
+            ];
 
 
-        $config = [
-            'app_id' => 'wx395497f7015b6ef2',
-            'secret' => 'f317b9fcc7e42ccc4587ae281b72d386',
-
-            // 下面为可选项
-            // 指定 API 调用返回结果的类型：array(default)/collection/object/raw/自定义类名
-            'response_type' => 'array',
-            'log' => [
-                'level' => 'debug',
-                'file' => __DIR__.'/wechat.log',
-            ],
-        ];
-
-        $app = Factory::miniProgram($config);
-        $result = $app->auth->session($js_code);
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             return [
                 'Status' => 201,
                 'Msg' => $e->getMessage()
             ];
         }
-
-        return [
-            'Status' => 200,
-            'Result' => $result
-        ];
-
-
-
-
-        $username = $request->input('jscode','');
-
-        if(empty($username)){
-            return [
-                'Status' => 201,
-                'Msg' => '用户名不能为空'
-            ];
-        }
-
-
-
-        $this->session->set($this->user_key,1);
-        $sessionid = $this->session->getId();
-
-        return [
-            'Status' => 200,
-            'Msg' => '登录成功',
-            'Phpesessid' => $sessionid
-        ];
     }
 
 
@@ -124,8 +137,9 @@ class UserController extends  ApiController
     /**
      * @RequestMapping(path="getConfig", methods="post,options")
      */
-    public function getConfig(RequestInterface $request){
-        if(!$this->session->get($this->user_key)){
+    public function getConfig(RequestInterface $request)
+    {
+        if (!$this->session->get($this->user_key)) {
             return [
                 'Status' => 403,
                 'Msg' => '未登入'
@@ -137,7 +151,7 @@ class UserController extends  ApiController
 // 通过 DI 容器获取或直接注入 RedisFactory 类
         $redis = $container->get(RedisFactory::class)->get('default');
         $data = $redis->get($this->config_key);
-        if(!$data){
+        if (!$data) {
             return [
                 'Status' => 200,
                 'Data' => [
@@ -146,8 +160,8 @@ class UserController extends  ApiController
             ];
         }
 
-         $data = unserialize($data);
-         $data['prize'] = json_decode($data['prize'],true);
+        $data = unserialize($data);
+        $data['prize'] = json_decode($data['prize'], true);
 
 
         return [
@@ -160,7 +174,8 @@ class UserController extends  ApiController
     /**
      * @RequestMapping(path="draw", methods="post,options")
      */
-    public function draw(){
+    public function draw()
+    {
 //        if(!$this->session->get($this->user_key)){
 //            return [
 //                'Status' => 403,
@@ -174,7 +189,7 @@ class UserController extends  ApiController
 // 通过 DI 容器获取或直接注入 RedisFactory 类
         $redis = $container->get(RedisFactory::class)->get('default');
         $data = $redis->get($this->config_key);
-        if(!$data){
+        if (!$data) {
             return [
                 'Status' => 201,
                 'Msg' => '未配置参数'
@@ -182,17 +197,17 @@ class UserController extends  ApiController
         }
 
         $data = unserialize($data);
-        $data['prize'] = json_decode($data['prize'],true);
+        $data['prize'] = json_decode($data['prize'], true);
 
         $prize = $data['prize'];
 
 
         $draw_price = [];
-        foreach($prize as $k=>$_v ){
+        foreach ($prize as $k => $_v) {
             $draw_price[$k] = $_v['Rate'] * 0.01;
         }
 
-        if(empty($draw_price)){
+        if (empty($draw_price)) {
             return [
                 'Status' => 201,
                 'Msg' => '奖品未配置'

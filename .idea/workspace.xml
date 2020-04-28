@@ -22,7 +22,6 @@
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Middleware/CorsMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Middleware/CorsMiddleware.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +185,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Angular2Svg" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testhy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyperf-skeleton/app/Model" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\Model" />
+      <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\Drive" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -200,7 +211,7 @@
       <updated>1588037449257</updated>
       <workItem from="1588037450369" duration="24000" />
       <workItem from="1588037474990" duration="107000" />
-      <workItem from="1588037666532" duration="1117000" />
+      <workItem from="1588037666532" duration="3683000" />
     </task>
     <servers />
   </component>
