@@ -109,6 +109,10 @@ class UserController extends ApiController
                 $sessionid = $this->session->getId();
                 return [
                     'Status' => 200,
+                    'UserInfo' => [
+                        'userid' => $userid,
+                        'openid' => $openid
+                    ],
                     'Msg' => '登录成功',
                     'Phpesessid' => $sessionid
                 ];
