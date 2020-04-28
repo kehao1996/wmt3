@@ -117,6 +117,7 @@ class IndexController extends ApiController
      *  share_status //1开启0关闭  开启后用户抽奖机会用完提示分享 0 关闭后不能分享
      *  draw_day_count //每天抽奖次数
      *  draw_day_num //每天抽奖人数
+     *  draw_desc //抽奖描述
      *
      */
 
@@ -132,6 +133,7 @@ class IndexController extends ApiController
         $data['share_status'] = $request->input('share_status',0);
         $data['draw_day_count'] = $request->input('draw_day_count',0);
         $data['draw_day_num'] = $request->input('draw_day_num',0);
+        $data['draw_desc'] = $request->input('draw_desc','');
 
 
 

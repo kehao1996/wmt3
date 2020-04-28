@@ -156,7 +156,9 @@ class DrawController extends ApiController
                 'DrawDayCount' => $data['draw_day_count'],
                 'DrawDayNum' => $data['draw_day_num'],
                 'SyDrawCount' => $sy_draw_cont,
-                'DrawZonNum' => $draw_count
+                'DrawZonNum' => $draw_count,
+                'Wxh' => $data['wxh'],
+                'DrawDesc' => $data['draw_desc'],
             ],
             'Msg' => '获取成功'
         ];
@@ -280,7 +282,20 @@ class DrawController extends ApiController
      * 域名 /user/getPrizeLog
      * <pre>
      * POST
+     * </pre>
      *
+     * @return string json
+     *
+     * <pre>
+     * Status 200
+     * Data :
+     * Result: //自己的中奖记录
+     * nickname //名称
+     * headimg //头像
+     * createtime //中将时间
+     * prize_info //奖品信息
+     *
+     * Msg
      * </pre>
      *
      *
@@ -328,7 +343,6 @@ class DrawController extends ApiController
             ],
             'Msg' => '获取成功'
         ];
-
     }
 
 

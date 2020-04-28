@@ -147,7 +147,7 @@ class UserController extends ApiController
 
 
     /**
-     * 获取token
+     * 获取token /user/getToken
      *
      * <pre>
      * POST
