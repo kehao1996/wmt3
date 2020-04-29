@@ -157,6 +157,7 @@ class IndexController extends ApiController
 
     /**
      * @RequestMapping(path="getConfig", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
      */
     public function getConfig(RequestInterface $request){
 
