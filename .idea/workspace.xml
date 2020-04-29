@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/vendor/phper666/jwt-auth/src/Middleware/JWTAuthMiddleware.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/vendor/phper666/jwt-auth/src/Middleware/JWTAuthMiddleware.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +218,7 @@
       <updated>1588037449257</updated>
       <workItem from="1588037450369" duration="24000" />
       <workItem from="1588037474990" duration="107000" />
-      <workItem from="1588037666532" duration="24107000" />
+      <workItem from="1588037666532" duration="24271000" />
     </task>
     <servers />
   </component>
@@ -235,10 +237,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588049420776">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588124144298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588049420776" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588124144298" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1588037675465">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
