@@ -22,6 +22,7 @@ use \Phper666\JWTAuth\JWT;
 use \Phper666\JWTAuth\Middleware\JWTAuthMiddleware;
 use Hyperf\HttpServer\Annotation\Middlewares;
 use Hyperf\HttpServer\Annotation\Middleware;
+use App\Middleware\CorsMiddleware;
 
 
 
@@ -158,6 +159,7 @@ class IndexController extends ApiController
     /**
      * @RequestMapping(path="getConfig", methods="post,options")
      * @Middleware(JWTAuthMiddleware::class)
+     * @Middleware(CorsMiddleware::class)
      */
     public function getConfig(RequestInterface $request){
 
