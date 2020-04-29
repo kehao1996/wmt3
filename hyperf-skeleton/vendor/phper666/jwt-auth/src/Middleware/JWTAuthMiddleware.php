@@ -48,16 +48,7 @@ class JWTAuthMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
 
-
-        $response = Context::get(ResponseInterface::class);
-        $response = $response->withHeader('Access-Control-Allow-Origin', '*')
-            ->withHeader('Access-Control-Allow-Credentials', 'true')
-            ->withHeader('Access-Control-Allow-Methods', 'POST,GET')
-            // Headers 可以根据实际情况进行改写。
-            ->withHeader('Access-Control-Allow-Headers', 'DNT,Keep-Alive,User-Agent,Cache-Control,Content-Type,Authorization,authorization');
-
-        Context::set(ResponseInterface::class, $response);
-
+        
         $isValidToken = false;
         // 根据具体业务判断逻辑走向，这里假设用户携带的token有效
         $token = $request->getHeaderLine('Authorization') ?? '';
