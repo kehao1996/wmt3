@@ -49,6 +49,7 @@ class UserController extends ApiController
      * 登录
      * 域名: /user/login
      * POST
+     * @param int userid  //邀请人的userid
      * @param string js_code //小程序code
      *
      * @return string json
@@ -124,6 +125,7 @@ class UserController extends ApiController
                     'Status' => 200,
                     'Msg' => '登录成功',
                     'Data' => [
+                        'userid' => $userid,
                         'token' => $token,
                         'exp' => $this->jwt->getTTL(),
                     ]
