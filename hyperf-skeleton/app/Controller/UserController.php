@@ -64,6 +64,7 @@ class UserController extends ApiController
     {
 
         $js_code = $request->input('js_code', '');
+        $yq_userid = $request->input('userid', 0);
         if (empty($js_code)) {
             return [
                 'Status' => 201,
@@ -110,6 +111,10 @@ class UserController extends ApiController
                         'Status' => 201,
                         'Msg' => '添加失败'
                     ];
+                }
+
+                if($yq_userid) {
+                    $dbUser->decUserDraw($yq_userid,1);
                 }
             }
 

@@ -166,6 +166,38 @@ class User
     }
 
     /**
+     * 减去用户抽奖次数
+     */
+    public function decUserDraw($userid,$count = 1){
+        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->decrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    /**
+     * 获取当前用户当前抽奖次数
+     */
+    public function getUserYqCount($userid){
+        $key = $this->key . 'UserYqCount:' . $userid .':' . date('Y-m-d');
+        if(!$this->redis->exists($key)){
+            return 0;
+        }
+
+        return $this->redis->get($key);
+    }
+
+    /**
+     * 设置当前用户抽奖次数
+     */
+    public function setUserYqCount($userid,$count = 1){
+        $key = $this->key . 'UserYqCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->incrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    /**
      * 设置当前活动抽奖人数
      *
      */
