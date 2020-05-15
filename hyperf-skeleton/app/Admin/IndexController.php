@@ -120,6 +120,10 @@ class IndexController extends ApiController
      *  draw_day_num //每天抽奖人数
      *  draw_desc //抽奖描述
      *
+     *
+     *  新增 2020.5.15
+     *  other_config //json 字符 前端随意发挥 返回接口会解析json返回数组给前段
+     *
      */
 
     /**
@@ -135,6 +139,7 @@ class IndexController extends ApiController
         $data['draw_day_count'] = $request->input('draw_day_count',0);
         $data['draw_day_num'] = $request->input('draw_day_num',0);
         $data['draw_desc'] = $request->input('draw_desc','');
+        $data['other_config'] = $request->input('other_config','');
 
 
 
@@ -178,6 +183,7 @@ class IndexController extends ApiController
 
          $data = unserialize($data);
          $data['prize'] = json_decode($data['prize'],true);
+         $data['other_config'] = json_decode($data['other_config'],true);
 
 
         return [

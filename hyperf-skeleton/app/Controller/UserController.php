@@ -274,7 +274,7 @@ class UserController extends ApiController
 
         $data = unserialize($data);
         $data['prize'] = json_decode($data['prize'], true);
-
+        $data['other_config'] = json_decode($data['other_config'],true);
 
         return [
             'Status' => 200,
