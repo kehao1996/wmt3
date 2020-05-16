@@ -304,7 +304,9 @@ class DrawController extends ApiController
         $userid = $parse_data['uid'];
         $pdo = new Pdo();
         $prize_log = $pdo->clear()->select('*')->from('prize_log')->where([
-            'userid' => $userid
+            'userid' => $userid,
+            'createtime >=' => date('Y-m-d') .' 00:00:00',
+            'createtime <=' => date('Y-m-d') . ' 23:59:59'
         ])->limit(100)->order('id desc')->getAll();
 
         $dbUser = new User();
