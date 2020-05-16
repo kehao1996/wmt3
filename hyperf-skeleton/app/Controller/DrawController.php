@@ -146,6 +146,10 @@ class DrawController extends ApiController
         $sy_draw_cont = empty($sy_draw_cont) ? 0 : $sy_draw_cont;
 
 
+        $_draw_h_count = date('H') * 1000;
+        $_draw_i_count = date('i') * 100;
+        $_draw_s_count = date('s') * 10;
+
         return [
             'Status' => 200,
             'Data' => [
@@ -153,7 +157,7 @@ class DrawController extends ApiController
                 'DrawDayCount' => $data['draw_day_count'],
                 'DrawDayNum' => $data['draw_day_num'],
                 'SyDrawCount' => $sy_draw_cont,
-                'DrawZonNum' => $draw_count,
+                'DrawZonNum' =>  intval($_draw_h_count) + intval($_draw_i_count) + intval($_draw_s_count) + $draw_count,
                 'Wxh' => $data['wxh'],
                 'DrawDesc' => $data['draw_desc'],
             ],
