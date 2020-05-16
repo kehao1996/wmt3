@@ -147,7 +147,7 @@ class DrawController extends ApiController
 
 
         $_draw_h_count = date('H') * 20000;
-        $_draw_i_count = date('i') * 100;
+        $_draw_i_count = date('i') * 1000;
         $_draw_s_count = date('s') * 10;
 
         return [
