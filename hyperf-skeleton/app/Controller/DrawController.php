@@ -210,7 +210,10 @@ class DrawController extends ApiController
 
         $draw_price = [];
         foreach ($prize as $k => $_v) {
-            $draw_price[$k] = $_v['Rate'] * 0.01;
+            if(!empty($_v['Rate'])){
+                $draw_price[$k] = $_v['Rate'] * 0.01;
+            }
+
         }
 
         if (empty($draw_price)) {
