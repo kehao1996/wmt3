@@ -258,7 +258,7 @@ class DrawController extends ApiController
         $dbUser->addUserDraw($userid); //增加用户到抽奖池
         $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
 
-        $index = getPrize($draw_price);
+        $index = getPrize($draw_price,$rate);
         $prize_info = $prize[$index];
         if(!empty($prize_info)){ //中奖
             $dbUser->setUserPrizeCount($userid,$index,1); //中奖次数+1
