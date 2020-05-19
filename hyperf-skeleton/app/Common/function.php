@@ -13,9 +13,10 @@
  * @return bool|int|string
  * @author liuweiping
  */
-function getPrize($data = [])
+function getPrize($data = [],$rate = 1)
 {
-    $r = mt_rand(0, 1000) * 0.001;
+    $rate = $rate / 1000;
+    $r = mt_rand(0, 1000) * $rate;
     $t_r = 0;//累计求和
     $prize = false;
     foreach ($data as $key => $val) {

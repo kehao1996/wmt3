@@ -207,11 +207,17 @@ class DrawController extends ApiController
 
         $prize = $data['prize'];
 
+        $dbUser = new User();
 
         $draw_price = [];
+        $rate = 0;
         foreach ($prize as $k => $_v) {
             if(!empty($_v['Rate'])){
-                $draw_price[$k] = $_v['Rate'] * 0.01;
+                $_prize_count = $dbUser->returnUserPrizeCount($userid,$k); //奖品数量
+                if($_prize_count < $_v['Count']){ //还没达到上限
+                    $draw_price[$k] = $_v['Rate'] * 0.01;
+                    $rate+=$draw_price[$k];
+                }
             }
 
         }
@@ -223,7 +229,7 @@ class DrawController extends ApiController
             ];
         }
 
-        $dbUser = new User();
+
         $draw_count = $dbUser->returnUserDraw();
         $draw_count = count($draw_count);
         if($draw_count >= $data['draw_day_num']) { //今日抽奖人数已满
@@ -253,9 +259,9 @@ class DrawController extends ApiController
         $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
 
         $index = getPrize($draw_price);
-
         $prize_info = $prize[$index];
         if(!empty($prize_info)){ //中奖
+            $dbUser->setUserPrizeCount($userid,$index,1); //中奖次数+1
             $dbPrizeLog = new PrizeLog();
             $dbPrizeLog->add([
                 'userid' => $userid,

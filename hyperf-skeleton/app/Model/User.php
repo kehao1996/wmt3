@@ -227,5 +227,29 @@ class User
         return false;
     }
 
+    /**
+     * 设置某个用户中奖次数
+     *
+     * <pre>
+     * POST
+     *
+     * </pre>
+     */
+
+    public function setUserPrizeCount($userid,$prizeid,$count = 1){
+        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid;
+        $this->redis->incrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    public function returnUserPrizeCount($userid,$prizeid){
+        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid;
+        if(!$this->redis->exists($key)){
+            return 0;
+        }
+        return $this->redis->get($key);
+    }
+
 
 }
