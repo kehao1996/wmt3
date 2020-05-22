@@ -237,14 +237,14 @@ class User
      */
 
     public function setUserPrizeCount($userid,$prizeid,$count = 1){
-        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid;
+        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid  . ':' . date('Y-m-d');
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
         return true;
     }
 
     public function returnUserPrizeCount($userid,$prizeid){
-        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid;
+        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid . ':' . date('Y-m-d');;
         if(!$this->redis->exists($key)){
             return 0;
         }
