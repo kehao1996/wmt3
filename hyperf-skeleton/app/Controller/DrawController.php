@@ -360,10 +360,9 @@ class DrawController extends ApiController
     /**
      * 增加抽奖机会  /Draw/incChanceCount
      *
-     * @RequestMapping(path="getPrizeLog",methods="post,options")
+     * @RequestMapping(path="incChanceCount",methods="post,options")
      * @Middleware(JWTAuthMiddleware::class)
      */
-
     public function incChanceCount(){
         $parse_data = $this->jwt->getParserData();
         $userid = $parse_data['uid'];
