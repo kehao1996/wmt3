@@ -84,8 +84,8 @@ class DrawController extends ApiController
         $data = unserialize($data);
         $draw_day_count = !empty($data['draw_day_count']) ?$data['draw_day_count'] : 0;
         //每天抽奖次数 - 已经抽奖次数 = 还剩抽奖次数
-        $draw_count = $draw_day_count - $user_draw;
-        $draw_count = !empty($draw_count) ? $draw_count : 0;
+
+        $draw_count = $dbUser->getChanceCount($userid);
 
 
         return [
@@ -243,18 +243,17 @@ class DrawController extends ApiController
         }
 
 
-        $draw_user_count = $dbUser->getUserDraw($userid);
-        $k_draw_count = $data['draw_day_count'] - $draw_user_count ; //可以抽奖次数
-        if(!$k_draw_count){
+        $draw_user_count = $dbUser->getChanceCount($userid);//可以抽奖次数
+        if(!$draw_user_count){
             return [
                 'Status' => 201,
                 'Data' => [
-                    'count' => $k_draw_count
+                    'count' => $draw_user_count
                 ],
                 'Msg' => '可抽奖次数不足,请明天来'
             ];
         }
-
+        $dbUser->decChanceCount($userid,1);
         $dbUser->addUserDraw($userid); //增加用户到抽奖池
         $dbUser->setUserDraw($userid,1); //今日抽奖次数 + 1
 
@@ -354,6 +353,24 @@ class DrawController extends ApiController
                 'Result' => $prize_log
             ],
             'Msg' => '获取成功'
+        ];
+    }
+
+
+    /**
+     * 增加抽奖机会  /Draw/incChanceCount
+     *
+     * @RequestMapping(path="getPrizeLog",methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+
+    public function incChanceCount(){
+        $parse_data = $this->jwt->getParserData();
+        $userid = $parse_data['uid'];
+        $dbUser = new User();
+        $dbUser->incChanceCount($userid,1);
+        return [
+            'Status' => 200
         ];
     }
 

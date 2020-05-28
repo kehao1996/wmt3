@@ -10,6 +10,7 @@ namespace App\Model;
 
 use App\Drive\Pdo;
 use App\Drive\Redis;
+use PhpCsFixer\Fixer\Basic\BracesFixer;
 
 class User
 {
@@ -251,5 +252,44 @@ class User
         return $this->redis->get($key);
     }
 
+
+    /**
+     * 用户机会
+     */
+
+    public function incChanceCount($userid,$count = 1){
+        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->incrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    /**
+     * 减去用户机会
+     *
+     * <pre>
+     *
+     * </pre>
+     */
+
+    public function decChanceCount($userid,$count = 1){
+        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->decrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    public function isChanceCount($userid){
+        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
+        if($this->redis->exists($key)){
+            return true;
+        }
+        return false;
+    }
+
+    public function getChanceCount($userid){
+        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
+        return $this->redis->get($key);
+    }
 
 }

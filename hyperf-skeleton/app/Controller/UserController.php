@@ -113,13 +113,36 @@ class UserController extends ApiController
                     ];
                 }
 
+
                 if($yq_userid) {
-                    $dbUser->decUserDraw($yq_userid,1);
+                    $dbUser->incChanceCount($yq_userid,1);
                 }
             }
 
             $userid = $dbUser->getidByOpenid($openid);
             if($userid){
+                $status = $dbUser->isChanceCount($userid);
+                if($status === false){ //不存在 赠送一次机会
+
+                    $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+                    $redis = $container->get(RedisFactory::class)->get('default');
+                    $data = $redis->get($this->config_key);
+                    if (!$data) {
+                        return [
+                            'Status' => 200,
+                            'Data' => [
+
+                            ]
+                        ];
+                    }
+
+                    $data = unserialize($data);
+                    $user_count = empty($data['draw_day_count']) ? 1: $data['draw_day_count'];
+
+                    $dbUser->incChanceCount($userid,$user_count);
+                }
                 $userData = [
                     'uid' => $userid,
                     'openid' => $openid
