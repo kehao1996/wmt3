@@ -160,6 +160,7 @@ class User
      * 设置当前用户抽奖次数
      */
     public function setUserDraw($userid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
@@ -170,6 +171,7 @@ class User
      * 减去用户抽奖次数
      */
     public function decUserDraw($userid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
         $this->redis->decrBy($key,$count);
         $this->redis->expire($key,86400);
@@ -192,6 +194,7 @@ class User
      * 设置当前用户抽奖次数
      */
     public function setUserYqCount($userid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'UserYqCount:' . $userid .':' . date('Y-m-d');
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
@@ -238,6 +241,7 @@ class User
      */
 
     public function setUserPrizeCount($userid,$prizeid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid  . ':' . date('Y-m-d');
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
@@ -258,6 +262,7 @@ class User
      */
 
     public function incChanceCount($userid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
@@ -273,6 +278,7 @@ class User
      */
 
     public function decChanceCount($userid,$count = 1){
+        $count = intval($count);
         $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
         $this->redis->decrBy($key,$count);
         $this->redis->expire($key,86400);
