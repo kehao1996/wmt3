@@ -141,6 +141,7 @@ class UserController extends ApiController
                     $data = unserialize($data);
                     $user_count = empty($data['draw_day_count']) ? 1: $data['draw_day_count'];
 
+                    var_dump($user_count);
                     $dbUser->incChanceCount($userid,$user_count);
                 }
                 $userData = [
