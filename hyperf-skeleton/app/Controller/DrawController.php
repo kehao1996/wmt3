@@ -93,7 +93,7 @@ class DrawController extends ApiController
         return [
             'Status' => 200,
             'Data' => [
-                'SkinDebrisCount' => $skin_debris_count,
+                'SkinDebrisCount' => empty($skin_debris_count) ? 0 : $skin_debris_count,
                 'UserInfo' => $userinfo,
                 'DrawCount' => intval($draw_count)
             ],
@@ -391,7 +391,7 @@ class DrawController extends ApiController
         $parse_data = $this->jwt->getParserData();
         $userid = $parse_data['uid'];
         $dbUser = new User();
-        $dbUser->incSkinDebrisCount($userid,1);
+
 
         $container = ApplicationContext::getContainer();
 

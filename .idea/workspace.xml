@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/DrawController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/DrawController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +237,7 @@
       <workItem from="1589163410772" duration="13330000" />
       <workItem from="1589448716782" duration="18161000" />
       <workItem from="1590111158802" duration="1388000" />
-      <workItem from="1590825242333" duration="4380000" />
+      <workItem from="1590825242333" duration="5146000" />
     </task>
     <servers />
   </component>
