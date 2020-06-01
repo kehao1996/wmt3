@@ -89,10 +89,12 @@ class DrawController extends ApiController
 
         $draw_count = $dbUser->getChanceCount($userid);
         $skin_debris_count = $dbUser->getSkinDebrisCount($userid);
+        $video_count = $dbUser->getVideoCount($userid);
 
         return [
             'Status' => 200,
             'Data' => [
+                'VideoCount' => empty($video_count) ? 0 : $video_count,
                 'SkinDebrisCount' => empty($skin_debris_count) ? 0 : $skin_debris_count,
                 'UserInfo' => $userinfo,
                 'DrawCount' => intval($draw_count)
@@ -401,6 +403,24 @@ class DrawController extends ApiController
         $data = unserialize($data);
         $skin_debris_count = empty($data['skin_debris_count']) ? 1 : $data['skin_debris_count'];
         $dbUser->incSkinDebrisCount($userid,$skin_debris_count);
+
+        return [
+            'Status' => 200
+        ];
+    }
+
+
+    /**
+     * 增加视频次数  /Draw/incVideo
+     *
+     * @RequestMapping(path="incVideo",methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+    public function incVideo(){
+        $parse_data = $this->jwt->getParserData();
+        $userid = $parse_data['uid'];
+        $dbUser = new User();
+        $dbUser->incVideoCount($userid,1);
 
         return [
             'Status' => 200

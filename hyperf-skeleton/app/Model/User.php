@@ -334,4 +334,40 @@ class User
         return $this->redis->get($key);
     }
 
+
+    /**
+     * 用户皮肤碎片
+     */
+
+    public function incVideoCount($userid,$count = 1){
+        $count = intval($count);
+        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->incrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    /**
+     * 减去用户机会
+     *
+     * <pre>
+     *
+     * </pre>
+     */
+
+    public function decVideoCount($userid,$count = 1){
+        $count = intval($count);
+        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->decrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+
+
+    public function getVideoCount($userid){
+        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
+        return $this->redis->get($key);
+    }
+
 }
