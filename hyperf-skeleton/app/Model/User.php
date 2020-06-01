@@ -307,7 +307,7 @@ class User
         $count = intval($count);
         $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
         $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $this->redis->expire($key,864000);
         return true;
     }
 
@@ -323,7 +323,7 @@ class User
         $count = intval($count);
         $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
         $this->redis->decrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $this->redis->expire($key,864000);
         return true;
     }
 
