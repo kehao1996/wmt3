@@ -115,6 +115,8 @@ class IndexController extends ApiController
      *
      *  wxh //客服微信号
      *  prize //奖品 自定义格式：[{"Name": "奖品1","Rate": 0.1,"Desc": "奖品描述","Icon": "图片"},{"Name": "奖品2","Rate": 0.9,"Desc": "奖品描述","Icon": "图片"}]
+     *
+     *
      *  share_status //1开启0关闭  开启后用户抽奖机会用完提示分享 0 关闭后不能分享
      *  draw_day_count //每天抽奖次数
      *  draw_day_num //每天抽奖人数
@@ -123,6 +125,8 @@ class IndexController extends ApiController
      *
      *  新增 2020.5.15
      *  other_config //json 字符 前端随意发挥 返回接口会解析json返回数组给前段
+     *  新增2020.6.1
+     *  prize json格式中新增 Skin_Status //是否是皮肤碎片1是皮肤碎片0不是皮肤碎片 //Min 最小值 //Max 最大值
      *
      */
 

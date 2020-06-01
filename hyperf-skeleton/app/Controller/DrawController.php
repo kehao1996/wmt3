@@ -62,6 +62,8 @@ class DrawController extends ApiController
      * Data :
      * UserInfo  //个人信息
      * DrawCount //自己今天剩余抽奖次数
+     * 新增2020.6.1
+     * SkinDebrisCount //碎片个数
      *
      * }
      * </pre>
@@ -86,11 +88,12 @@ class DrawController extends ApiController
         //每天抽奖次数 - 已经抽奖次数 = 还剩抽奖次数
 
         $draw_count = $dbUser->getChanceCount($userid);
-
+        $skin_debris_count = $dbUser->getSkinDebrisCount($userid);
 
         return [
             'Status' => 200,
             'Data' => [
+                'SkinDebrisCount' => $skin_debris_count,
                 'UserInfo' => $userinfo,
                 'DrawCount' => intval($draw_count)
             ],
@@ -260,6 +263,10 @@ class DrawController extends ApiController
         $index = getPrize($draw_price,$rate);
         $prize_info = $prize[$index];
         if(!empty($prize_info)){ //中奖
+            if($prize_info['Skin_Status'] == 1){
+                $count = mt_rand($prize_info['Min'],$prize_info['Max']);
+                $dbUser->incSkinDebrisCount($userid,$count);
+            }
             $dbUser->setUserPrizeCount($userid,$index,1); //中奖次数+1
             $dbPrizeLog = new PrizeLog();
             $dbPrizeLog->add([
@@ -368,6 +375,33 @@ class DrawController extends ApiController
         $userid = $parse_data['uid'];
         $dbUser = new User();
         $dbUser->incChanceCount($userid,1);
+        return [
+            'Status' => 200
+        ];
+    }
+
+
+    /**
+     * 增加皮肤碎片机会  /Draw/incSkinDebris
+     *
+     * @RequestMapping(path="incSkinDebris",methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+    public function incSkinDebris(){
+        $parse_data = $this->jwt->getParserData();
+        $userid = $parse_data['uid'];
+        $dbUser = new User();
+        $dbUser->incSkinDebrisCount($userid,1);
+
+        $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+        $redis = $container->get(RedisFactory::class)->get('default');
+        $data = $redis->get($this->config_key);
+        $data = unserialize($data);
+        $skin_debris_count = empty($data['skin_debris_count']) ? 1 : $data['skin_debris_count'];
+        $dbUser->incSkinDebrisCount($userid,$skin_debris_count);
+
         return [
             'Status' => 200
         ];

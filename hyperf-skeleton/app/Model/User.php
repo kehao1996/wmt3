@@ -298,4 +298,40 @@ class User
         return $this->redis->get($key);
     }
 
+
+    /**
+     * 用户皮肤碎片
+     */
+
+    public function incSkinDebrisCount($userid,$count = 1){
+        $count = intval($count);
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->incrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+    /**
+     * 减去用户机会
+     *
+     * <pre>
+     *
+     * </pre>
+     */
+
+    public function decSkinDebrisCount($userid,$count = 1){
+        $count = intval($count);
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        $this->redis->decrBy($key,$count);
+        $this->redis->expire($key,86400);
+        return true;
+    }
+
+
+
+    public function getSkinDebrisCount($userid){
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        return $this->redis->get($key);
+    }
+
 }
