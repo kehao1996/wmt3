@@ -115,6 +115,24 @@ class UserController extends ApiController
 
 
                 if($yq_userid) {
+
+                    $container = ApplicationContext::getContainer();
+
+// 通过 DI 容器获取或直接注入 RedisFactory 类
+                    $redis = $container->get(RedisFactory::class)->get('default');
+                    $data = $redis->get($this->config_key);
+                    if (!$data) {
+                        return [
+                            'Status' => 200,
+                            'Data' => [
+
+                            ]
+                        ];
+                    }
+
+                    $data = unserialize($data);
+                    $yq_skin_cunt = empty($data['yq_skin_cunt']) ? 1: $data['yq_skin_cunt'];
+                    $dbUser->incSkinDebrisCount($yq_userid,$yq_skin_cunt);
                     $dbUser->incChanceCount($yq_userid,1);
                 }
             }

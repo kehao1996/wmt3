@@ -305,7 +305,7 @@ class User
 
     public function incSkinDebrisCount($userid,$count = 1){
         $count = intval($count);
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
         $this->redis->incrBy($key,$count);
         $this->redis->expire($key,86400);
         return true;
@@ -321,7 +321,7 @@ class User
 
     public function decSkinDebrisCount($userid,$count = 1){
         $count = intval($count);
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
         $this->redis->decrBy($key,$count);
         $this->redis->expire($key,86400);
         return true;
@@ -330,7 +330,7 @@ class User
 
 
     public function getSkinDebrisCount($userid){
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid .':' . date('Y-m-d');
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
         return $this->redis->get($key);
     }
 
