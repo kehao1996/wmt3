@@ -144,7 +144,7 @@ class IndexController extends ApiController
         $data['draw_day_num'] = $request->input('draw_day_num',0);
         $data['draw_desc'] = $request->input('draw_desc','');
         $data['other_config'] = $request->input('other_config','');
-
+        $data['skin_debris_count'] = $request->input('skin_debris_count',1);
 
 
         $container = ApplicationContext::getContainer();
