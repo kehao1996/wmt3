@@ -147,9 +147,10 @@ class User
     /**
      * 获取当前用户当前抽奖次数
      */
-    public function getUserDraw($userid){
-        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
-        if(!$this->redis->exists($key)){
+    public function getUserDraw($userid)
+    {
+        $key = $this->key . 'DrawCount:' . $userid . ':' . date('Y-m-d');
+        if (!$this->redis->exists($key)) {
             return 0;
         }
 
@@ -159,31 +160,34 @@ class User
     /**
      * 设置当前用户抽奖次数
      */
-    public function setUserDraw($userid,$count = 1){
+    public function setUserDraw($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'DrawCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
     /**
      * 减去用户抽奖次数
      */
-    public function decUserDraw($userid,$count = 1){
+    public function decUserDraw($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'DrawCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->decrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'DrawCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
     /**
      * 获取当前用户当前抽奖次数
      */
-    public function getUserYqCount($userid){
-        $key = $this->key . 'UserYqCount:' . $userid .':' . date('Y-m-d');
-        if(!$this->redis->exists($key)){
+    public function getUserYqCount($userid)
+    {
+        $key = $this->key . 'UserYqCount:' . $userid . ':' . date('Y-m-d');
+        if (!$this->redis->exists($key)) {
             return 0;
         }
 
@@ -193,11 +197,12 @@ class User
     /**
      * 设置当前用户抽奖次数
      */
-    public function setUserYqCount($userid,$count = 1){
+    public function setUserYqCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserYqCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserYqCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
@@ -205,27 +210,30 @@ class User
      * 设置当前活动抽奖人数
      *
      */
-    public function addUserDraw($userid){
-        $key = $this->key .'UserDrawList:' . date('Y-m-d');
-        $this->redis->sAdd($key,$userid);
-        $this->redis->expire($key,86400);
+    public function addUserDraw($userid)
+    {
+        $key = $this->key . 'UserDrawList:' . date('Y-m-d');
+        $this->redis->sAdd($key, $userid);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
     /**
      * 获取当前抽奖人数
      */
-    public function returnUserDraw(){
-        $key = $this->key .'UserDrawList:' . date('Y-m-d');
+    public function returnUserDraw()
+    {
+        $key = $this->key . 'UserDrawList:' . date('Y-m-d');
         return $this->redis->sMembers($key);
     }
 
     /**
      * 判断自己今天是否抽奖了
      */
-    public function isUserDraw($userid){
-        $key = $this->key .'UserDrawList:' . date('Y-m-d');
-        if($this->redis->sIsMember($key,$userid)){
+    public function isUserDraw($userid)
+    {
+        $key = $this->key . 'UserDrawList:' . date('Y-m-d');
+        if ($this->redis->sIsMember($key, $userid)) {
             return true;
         }
         return false;
@@ -240,17 +248,19 @@ class User
      * </pre>
      */
 
-    public function setUserPrizeCount($userid,$prizeid,$count = 1){
+    public function setUserPrizeCount($userid, $prizeid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid  . ':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid . ':' . date('Y-m-d');
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
-    public function returnUserPrizeCount($userid,$prizeid){
+    public function returnUserPrizeCount($userid, $prizeid)
+    {
         $key = $this->key . 'UserPrizeCount:' . $userid . ':' . $prizeid . ':' . date('Y-m-d');;
-        if(!$this->redis->exists($key)){
+        if (!$this->redis->exists($key)) {
             return 0;
         }
         return $this->redis->get($key);
@@ -261,11 +271,12 @@ class User
      * 用户机会
      */
 
-    public function incChanceCount($userid,$count = 1){
+    public function incChanceCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserChanceCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
@@ -277,24 +288,27 @@ class User
      * </pre>
      */
 
-    public function decChanceCount($userid,$count = 1){
+    public function decChanceCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->decrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserChanceCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
-    public function isChanceCount($userid){
-        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
-        if($this->redis->exists($key)){
+    public function isChanceCount($userid)
+    {
+        $key = $this->key . 'UserChanceCount:' . $userid . ':' . date('Y-m-d');
+        if ($this->redis->exists($key)) {
             return true;
         }
         return false;
     }
 
-    public function getChanceCount($userid){
-        $key = $this->key . 'UserChanceCount:' . $userid .':' . date('Y-m-d');
+    public function getChanceCount($userid)
+    {
+        $key = $this->key . 'UserChanceCount:' . $userid . ':' . date('Y-m-d');
         return $this->redis->get($key);
     }
 
@@ -303,11 +317,12 @@ class User
      * 用户皮肤碎片
      */
 
-    public function incSkinDebrisCount($userid,$count = 1){
+    public function incSkinDebrisCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,864000);
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid;
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 864000);
         return true;
     }
 
@@ -319,18 +334,19 @@ class User
      * </pre>
      */
 
-    public function decSkinDebrisCount($userid,$count = 1){
+    public function decSkinDebrisCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
-        $this->redis->decrBy($key,$count);
-        $this->redis->expire($key,864000);
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid;
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key, 864000);
         return true;
     }
 
 
-
-    public function getSkinDebrisCount($userid){
-        $key = $this->key . 'UserSkinDebrisCount:' . $userid ;
+    public function getSkinDebrisCount($userid)
+    {
+        $key = $this->key . 'UserSkinDebrisCount:' . $userid;
         return $this->redis->get($key);
     }
 
@@ -339,11 +355,12 @@ class User
      * 用户皮肤碎片
      */
 
-    public function incVideoCount($userid,$count = 1){
+    public function incVideoCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->incrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserVideoCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
@@ -355,19 +372,131 @@ class User
      * </pre>
      */
 
-    public function decVideoCount($userid,$count = 1){
+    public function decVideoCount($userid, $count = 1)
+    {
         $count = intval($count);
-        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
-        $this->redis->decrBy($key,$count);
-        $this->redis->expire($key,86400);
+        $key = $this->key . 'UserVideoCount:' . $userid . ':' . date('Y-m-d');
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key, 86400);
         return true;
     }
 
 
-
-    public function getVideoCount($userid){
-        $key = $this->key . 'UserVideoCount:' . $userid .':' . date('Y-m-d');
+    public function getVideoCount($userid)
+    {
+        $key = $this->key . 'UserVideoCount:' . $userid . ':' . date('Y-m-d');
         return $this->redis->get($key);
     }
+
+    /**
+     * 获取当前用户集卡抽奖的次数
+     */
+    public function getUserCardDraw($userid)
+    {
+        $key = $this->key . 'CardDrawCount:' . $userid;
+        if (!$this->redis->exists($key)) {
+            $this->redis->set($key, 1, 864000);
+            return 1;
+        }
+
+        return $this->redis->get($key);
+    }
+
+    /**
+     * 减去当前用户集卡抽奖的数量
+     */
+    public function decUserCardDraw($userid, $count = 1)
+    {
+        $key = $this->key . 'CardDrawCount:' . $userid;
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+    /**
+     * 增加当前用户集卡的抽奖数量
+     */
+    public function incUserCardDraw($userid, $count = 1)
+    {
+        $key = $this->key . 'CardDrawCount:' . $userid;
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+
+    /**
+     * 获取当前用户集卡的卡片数量
+     */
+    public function getUserCardCount($userid,$prizeindex)
+    {
+        $key = $this->key . 'CardCount:' . $userid . ':' . $prizeindex;
+        if (!$this->redis->exists($key)) {
+            return 0;
+        }
+
+        return $this->redis->get($key);
+    }
+
+    /**
+     * 减去当前用户集卡抽奖的数量
+     */
+    public function decUserCardCount($userid,$prizeindex, $count = 1)
+    {
+        $key = $this->key . 'CardCount:' . $userid . ':' . $prizeindex;
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+    /**
+     * 增加当前用户集卡的抽奖数量
+     */
+    public function incUserCardCount($userid,$prizeindex, $count = 1)
+    {
+        $key = $this->key . 'CardCount:' . $userid . ':' . $prizeindex;
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+
+    /**
+     * 获取当前用户助力人数
+     */
+    public function getUserHelpCount($userid)
+    {
+        $key = $this->key . 'HelpCount:' . $userid;
+        if (!$this->redis->exists($key)) {
+            $this->redis->set($key, 1, 864000);
+            return 1;
+        }
+
+        return $this->redis->get($key);
+    }
+
+    /**
+     * 减去当前用户助力人数
+     */
+    public function decUserHelpCount($userid, $count = 1)
+    {
+        $key = $this->key . 'HelpCount:' . $userid;
+        $this->redis->decrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+    /**
+     * 增加当前用户助力人数
+     */
+    public function incUserHelpCount($userid, $count = 1)
+    {
+        $key = $this->key . 'HelpCount:' . $userid;
+        $this->redis->incrBy($key, $count);
+        $this->redis->expire($key,864000);
+        return true;
+    }
+
+
 
 }

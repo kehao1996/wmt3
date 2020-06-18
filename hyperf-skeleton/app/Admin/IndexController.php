@@ -123,10 +123,14 @@ class IndexController extends ApiController
      *  draw_desc //抽奖描述
      *
      *
+     *
      *  新增 2020.5.15
      *  other_config //json 字符 前端随意发挥 返回接口会解析json返回数组给前段
      *  新增2020.6.1
      *  prize json格式中新增 Skin_Status //是否是皮肤碎片1是皮肤碎片0不是皮肤碎片 //Min 最小值 //Max 最大值
+     *  新增2020.6.18
+     *  card_prize //集卡奖品 自定义格式：[{"Name": "奖品1","Rate": 0.1,"Desc": "奖品描述","Icon": "图片"},{"Name": "奖品2","Rate": 0.9,"Desc": "奖品描述","Icon": "图片"}]
+     *
      *
      */
 
@@ -146,6 +150,7 @@ class IndexController extends ApiController
         $data['other_config'] = $request->input('other_config','');
         $data['skin_debris_count'] = $request->input('skin_debris_count',1);
         $data['yq_skin_cunt'] = $request->input('yq_skin_cunt',1);
+        $data['card_prize'] = $request->input('card_prize','');
 
         $container = ApplicationContext::getContainer();
 
@@ -188,6 +193,7 @@ class IndexController extends ApiController
          $data = unserialize($data);
          $data['prize'] = json_decode($data['prize'],true);
          $data['other_config'] = json_decode($data['other_config'],true);
+         $data['card_prize'] = json_decode($data['card_prize'],true);
 
 
         return [

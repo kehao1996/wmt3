@@ -134,6 +134,13 @@ class UserController extends ApiController
                     $yq_skin_cunt = empty($data['yq_skin_cunt']) ? 1: $data['yq_skin_cunt'];
                     $dbUser->incSkinDebrisCount($yq_userid,$yq_skin_cunt);
                     $dbUser->incChanceCount($yq_userid,1);
+
+                    $dbUser->incUserHelpCount($yq_userid,1);
+                    $user_help_count = $dbUser->getUserHelpCount($yq_userid);
+                    if($user_help_count % 2 == 0){
+                        $dbUser->incUserCardDraw($yq_userid,1);
+                        $dbUser->decUserHelpCount($yq_userid,2);
+                    }
                 }
             }
 
@@ -316,6 +323,7 @@ class UserController extends ApiController
 
         $data = unserialize($data);
         $data['prize'] = json_decode($data['prize'], true);
+        $data['card_prize'] = json_decode($data['card_prize'], true);
         $data['other_config'] = json_decode($data['other_config'],true);
 
         return [

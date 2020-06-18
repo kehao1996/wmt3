@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Model/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -193,7 +195,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../groupsyn/queue" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyperf-skeleton/app/Controller" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -237,7 +239,11 @@
       <workItem from="1589163410772" duration="13330000" />
       <workItem from="1589448716782" duration="18161000" />
       <workItem from="1590111158802" duration="1388000" />
-      <workItem from="1590825242333" duration="6984000" />
+      <workItem from="1590825242333" duration="14936000" />
+      <workItem from="1591408519936" duration="695000" />
+      <workItem from="1591596018285" duration="4221000" />
+      <workItem from="1592270910863" duration="716000" />
+      <workItem from="1592274766561" duration="2578000" />
     </task>
     <servers />
   </component>
@@ -265,10 +271,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1589254119831">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1592271946080">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589254119831" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592271946080" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1590994909511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
