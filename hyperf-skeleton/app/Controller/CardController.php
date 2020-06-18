@@ -63,6 +63,7 @@ class CardController extends ApiController
      * UserInfo  //个人信息
      * DrawCount //自己剩余抽奖次数
      * CardList //自己所拥有的卡片数量  跟后台的card_prize返回一样多了一个Count字段当前拥有的数量
+     * HelpCount//当前助力人数
      *
      * }
      * </pre>
@@ -90,9 +91,11 @@ class CardController extends ApiController
         }
 
 
+        $help_count = $dbUser->getUserHelpCount($userid);
         return [
             'Status' => 200,
             'Data' => [
+                'HelpCount' => intval($help_count),
                 'CardList' => $card_prize,
                 'UserInfo' => $userinfo,
                 'DrawCount' => intval($user_draw)
