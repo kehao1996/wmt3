@@ -419,7 +419,7 @@ class User
     public function incUserCardDraw($userid, $count = 1)
     {
         $key = $this->key . 'CardDrawCount:' . $userid;
-        $this->redis->incrBy($key, $count);
+        $this->redis->incrBy($key, intval($count));
         $this->redis->expire($key,864000);
         return true;
     }
