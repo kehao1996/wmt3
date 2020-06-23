@@ -12,6 +12,8 @@
 
 namespace App\Admin;
 
+use App\Drive\Pdo;
+use App\Model\User;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Annotation\Controller;
 use Hyperf\HttpServer\Annotation\RequestMapping;
@@ -218,6 +220,7 @@ class IndexController extends ApiController
 
 
 
+
     public function checkLogin(){
         $data = [
             'Status' => 200,
@@ -226,6 +229,61 @@ class IndexController extends ApiController
         ];
         return $data;
 
+    }
+
+    /**
+     * 获取所有用户信息 /admin/getUserList
+     * <pre>
+     * POST
+     * pageindex //页码大小
+     * pagesize //页尺寸
+     * </pre>
+     *
+     * @RequestMapping(path="getUserList", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+    public function getUserList(RequestInterface $request)
+    {
+        $pageindex = $request->input('pageindex',1);
+        $pagesize = $request->input('pagesize',20);
+
+        $pdo = new Pdo();
+        $total = $pdo->clear()->select('count(id)')->from('user')->getValue();
+        $list = $pdo->clear()->select('*')->from('user')->limit(($pageindex - 1) * $pagesize,$pagesize)->getAll();
+
+        $data = [
+            'Status' => 200,
+            'Msg' => 'success',
+            'Data' => [
+                'Total' => $total,
+                'List' => $list
+            ]
+        ];
+        return $data;
+    }
+
+    /**
+     * 增加集卡抽奖机会 /admin/addCardDarw
+     * <pre>
+     * POST
+     * userid //用户主键id
+     * count //抽奖机会
+     * </pre>
+     *
+     * @RequestMapping(path="addCardDarw", methods="post,options")
+     * @Middleware(JWTAuthMiddleware::class)
+     */
+    public function addCardDarw(RequestInterface $request){
+        $userid = $request->input('userid',0);
+        $count = $request->input('count',0);
+
+        $dbUser = new User();
+        $dbUser->incUserCardDraw($userid,$count);
+        return [
+            'Status' => 200,
+            'Msg' => '增加成功',
+            'Data' => []
+        ];
     }
 
 }

@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1bca1a10-bdb6-45c3-a67b-25623721662f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/CardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Controller/CardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/hyperf-skeleton/app/Admin/IndexController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +193,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyperf-skeleton/app/Controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/hyperf-skeleton/app/Admin" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -202,8 +202,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\Controller" />
       <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\Admin" />
+      <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\Controller" />
       <recent name="D:\wnmp\www\wmt3\hyperf-skeleton\app\AdminController" />
     </key>
   </component>
@@ -241,7 +241,7 @@
       <workItem from="1591408519936" duration="695000" />
       <workItem from="1591596018285" duration="4221000" />
       <workItem from="1592270910863" duration="716000" />
-      <workItem from="1592274766561" duration="2752000" />
+      <workItem from="1592274766561" duration="5824000" />
     </task>
     <servers />
   </component>
